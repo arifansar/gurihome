@@ -38,6 +38,7 @@ class EnterNumberActivity : AppCompatActivity(), View.OnClickListener {
                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                startActivity(intent)
+               //todo need to chng
                finish()
            }
 
