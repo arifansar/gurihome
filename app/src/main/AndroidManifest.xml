@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GuriHouses">
         <activity
+            android:name=".base.BaseActivity"
+            android:exported="false" />
+        <activity
             android:name=".signup.ui.activities.SignUpActivity"
             android:exported="false" />
         <activity
@@ -19,7 +22,7 @@
             android:name=".usertype.ui.activities.ChooseOptionActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="false" />
         <activity
             android:name=".splash.ui.activities.SplashActivity"

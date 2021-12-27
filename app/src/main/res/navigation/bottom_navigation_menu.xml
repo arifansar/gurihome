@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_navigation_menu"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.gurihouses.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_chatFragment"
+            app:destination="@id/chat" />
+    </fragment>
+    <fragment
+        android:id="@+id/chat"
+        android:name="com.gurihouses.chat.chatFragment"
+        android:label="chatFragment" >
+        <action
+            android:id="@+id/action_chatFragment_to_recentFragment"
+            app:destination="@id/recent" />
+    </fragment>
+    <fragment
+        android:id="@+id/recent"
+        android:name="com.gurihouses.recent.RecentFragment"
+        android:label="RecentFragment" >
+        <action
+            android:id="@+id/action_recentFragment_to_notificationFragment"
+            app:destination="@id/notification" />
+    </fragment>
+    <fragment
+        android:id="@+id/notification"
+        android:name="com.gurihouses.notification.NotificationFragment"
+        android:label="NotificationFragment" >
+        <action
+            android:id="@+id/action_notificationFragment_to_profileFragment"
+            app:destination="@id/profile" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.gurihouses.profile.ProfileFragment"
+        android:label="ProfileFragment" />
+</navigation>
