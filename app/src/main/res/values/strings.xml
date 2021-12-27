@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">GuriHouses</string>
+    <string name="welcome_to_gurihouses">WELCOME TO GURIHOUSES</string>
+    <string name="please_login_to_your_user_account">Please login to your user account</string>
+    <string name="enter_your_number">ENTER YOUR NUMBER</string>
+    <string name="get_otp">Get OTP</string>
+    <string name="skip_login">Skip login</string>
+    <string name="sign_up">Signup</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="first_name">FIRST NAME</string>
+    <string name="last_name">LAST NAME</string>
+    <string name="mobile">MOBILE</string>
+    <string name="email_op">EMAIL (OPTIONAL)</string>
+    <string name="next">Next</string>
+    <string name="sign_in">Sign in</string>
+</resources>
