@@ -50,8 +50,8 @@
             android:layout_marginStart="@dimen/_10sdp"
             android:fontFamily="@font/calibriregular"
             android:padding="@dimen/_2sdp"
-            android:textColor="@color/black"
             android:text="Location: Cape town"
+            android:textColor="@color/black"
             android:textSize="@dimen/_12ssp" />
 
 

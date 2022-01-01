@@ -15,7 +15,8 @@ class SplashActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             intent= Intent(this, ChooseOptionActivity::class.java)
             startActivity(intent)
-
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+            finish()
 
         },3000)
     }

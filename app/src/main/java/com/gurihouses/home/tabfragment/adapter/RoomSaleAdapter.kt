@@ -6,12 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gurihouses.R
 import com.gurihouses.home.tabfragment.bean.RoomSaleResponse
 
-class RoomSaleAdapter(val ctx: Context?, val list: List<RoomSaleResponse>): RecyclerView.Adapter<RoomSaleAdapter.ViewHolder>() {
+class RoomSaleAdapter(val ctx: Context?, val list: List<RoomSaleResponse>,val listener:(RoomSaleResponse)->Unit): RecyclerView.Adapter<RoomSaleAdapter.ViewHolder>() {
 
 
     //this method is returning the view for each item in the list
@@ -30,10 +31,10 @@ class RoomSaleAdapter(val ctx: Context?, val list: List<RoomSaleResponse>): Recy
         holder.saleBhk.text = sub.publisher
         Glide.with(ctx!!).load(sub.imageurl).into(holder.roomImage)
 
-//        holder.more_text.setOnClickListener {
-//
-//            listener.invoke(list[position])
-//        }
+        holder.mMain.setOnClickListener {
+
+            listener.invoke(list[position])
+        }
 
     }
 
@@ -50,6 +51,7 @@ class RoomSaleAdapter(val ctx: Context?, val list: List<RoomSaleResponse>): Recy
         val salePrice = itemView.findViewById<TextView>(R.id.sale_price)
         val saleBhk = itemView.findViewById<TextView>(R.id.sale_bhk)
         val roomImage = itemView.findViewById<ImageView>(R.id.item_image)
+        val mMain = itemView.findViewById<CardView>(R.id.card_view)
 
     }
 }

@@ -25,9 +25,11 @@ data class RoomSaleResponse(
     @SerializedName("publisher")
     @Expose
     var publisher: String,
+
     @SerializedName("imageurl")
     @Expose
-    var imageurl: String,
+    var imageurl: Int,
+
     @SerializedName("bio")
     @Expose
     var bio: String,

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.gurihouses.home.HomeFragment"
+        android:name="com.gurihouses.home.bottomfragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/chat"
-        android:name="com.gurihouses.chat.chatFragment"
+        android:name="com.gurihouses.chat.bottomchat.fragment.ChatFragment"
         android:label="chatFragment" >
         <action
             android:id="@+id/action_chatFragment_to_recentFragment"

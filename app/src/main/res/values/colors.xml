@@ -10,4 +10,5 @@
     <color name="blue">#4287F5</color>
     <color name="gray">#E5E5E5</color>
     <color name="dark_gray">#7b7b7b</color>
+    <color name="send_hint_color">#6A6A6A</color>
 </resources>

@@ -1,4 +1,4 @@
-package com.gurihouses.home
+package com.gurihouses.home.bottomfragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
