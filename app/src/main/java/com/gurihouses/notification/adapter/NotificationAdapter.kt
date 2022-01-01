@@ -14,13 +14,13 @@ class NotificationAdapter(private val mList: List<NotificationData>) : RecyclerV
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): NotificationAdapter.ViewHolder {
+    ): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.list_notification, parent, false)
-        return NotificationAdapter.ViewHolder(view)
+        return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: NotificationAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
        val item = mList[position]
         holder.title.text = item.title
         holder.description.text = item.description
@@ -31,8 +31,8 @@ class NotificationAdapter(private val mList: List<NotificationData>) : RecyclerV
     }
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val title: TextView = itemView.findViewById(R.id.question)
-        val description: TextView = itemView.findViewById(R.id.answer)
+        val title = itemView.findViewById<TextView>(R.id.title)
+        val description = itemView.findViewById<TextView>(R.id.description)
 
     }
 }

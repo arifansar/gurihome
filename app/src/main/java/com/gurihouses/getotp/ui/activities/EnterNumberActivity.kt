@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import com.gurihouses.R
 import com.gurihouses.databinding.ActivityEnterNumberBinding
+import com.gurihouses.otp.ui.activities.OtpActivity
 import com.gurihouses.signup.ui.activities.SignUpActivity
 
 class EnterNumberActivity : AppCompatActivity(), View.OnClickListener {
@@ -35,7 +36,7 @@ class EnterNumberActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.btn_otp->{
 
-                val intent = Intent(this, SignUpActivity::class.java)
+                val intent = Intent(this, OtpActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK

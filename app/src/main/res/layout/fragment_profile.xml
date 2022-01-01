@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray">
+    android:background="@color/white">
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -26,52 +26,54 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/topLayout"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_90sdp"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:layout_marginEnd="@dimen/_16sdp"
-            android:background="@drawable/bg_const_layout"
-            android:layout_marginTop="@dimen/_24sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/ic_user"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/topLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_90sdp"
                 android:layout_marginStart="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:src="@drawable/user"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:background="@drawable/bg_const_layout"
+                android:elevation="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:text="John Doe"
-                android:textSize="@dimen/_11ssp"
-                android:textColor="@color/blue"
-                app:layout_constraintStart_toEndOf="@+id/ic_user"
-                app:layout_constraintTop_toTopOf="@+id/ic_user"/>
+                <ImageView
+                    android:id="@+id/ic_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:src="@drawable/user"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/gmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:text="johndoe@gmail.com"
-                android:textSize="@dimen/_11ssp"
-                app:layout_constraintStart_toEndOf="@+id/ic_user"
-                app:layout_constraintTop_toBottomOf="@+id/name"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="John Doe"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintStart_toEndOf="@+id/ic_user"
+                    app:layout_constraintTop_toTopOf="@+id/ic_user" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/gmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:text="johndoe@gmail.com"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintStart_toEndOf="@+id/ic_user"
+                    app:layout_constraintTop_toBottomOf="@+id/name" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/my_profile"
@@ -79,9 +81,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_24sdp"
                 android:text="@string/my_profile"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="@+id/topLayout"
-                app:layout_constraintTop_toBottomOf="@+id/topLayout"/>
+                app:layout_constraintTop_toBottomOf="@+id/topLayout" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ic_right_arrow"
@@ -89,19 +92,19 @@
                 android:layout_height="@dimen/_24sdp"
                 android:layout_marginEnd="@dimen/_24sdp"
                 android:src="@drawable/ic_right_arrow"
+                app:layout_constraintBottom_toBottomOf="@+id/my_profile"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/my_profile"
-                app:layout_constraintBottom_toBottomOf="@+id/my_profile"/>
+                app:layout_constraintTop_toTopOf="@+id/my_profile" />
 
             <View
                 android:id="@+id/view1"
                 android:layout_width="0dp"
-                android:layout_height="2dp"
+                android:layout_height="0.9dp"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:background="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/my_profile"
+                android:background="@color/dark_gray"
+                app:layout_constraintEnd_toEndOf="@+id/ic_right_arrow"
                 app:layout_constraintStart_toStartOf="@+id/my_profile"
-                app:layout_constraintEnd_toEndOf="@+id/ic_right_arrow"/>
+                app:layout_constraintTop_toBottomOf="@+id/my_profile" />
 
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -110,9 +113,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_24sdp"
                 android:text="@string/recently_viewed"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="@+id/topLayout"
-                app:layout_constraintTop_toBottomOf="@+id/view1"/>
+                app:layout_constraintTop_toBottomOf="@+id/view1" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ic_right_arrow2"
@@ -120,19 +124,19 @@
                 android:layout_height="@dimen/_24sdp"
                 android:layout_marginEnd="@dimen/_24sdp"
                 android:src="@drawable/ic_right_arrow"
+                app:layout_constraintBottom_toBottomOf="@+id/recently_viewd"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/recently_viewd"
-                app:layout_constraintBottom_toBottomOf="@+id/recently_viewd"/>
+                app:layout_constraintTop_toTopOf="@+id/recently_viewd" />
 
             <View
                 android:id="@+id/view2"
                 android:layout_width="0dp"
-                android:layout_height="2dp"
+                android:layout_height="0.9dp"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:background="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/recently_viewd"
+                android:background="@color/dark_gray"
+                app:layout_constraintEnd_toEndOf="@+id/ic_right_arrow"
                 app:layout_constraintStart_toStartOf="@+id/my_profile"
-                app:layout_constraintEnd_toEndOf="@+id/ic_right_arrow"/>
+                app:layout_constraintTop_toBottomOf="@+id/recently_viewd" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/about"
@@ -140,9 +144,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_24sdp"
                 android:text="@string/about"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="@+id/topLayout"
-                app:layout_constraintTop_toBottomOf="@+id/view2"/>
+                app:layout_constraintTop_toBottomOf="@+id/view2" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ic_right_arrow3"
@@ -150,19 +155,19 @@
                 android:layout_height="@dimen/_24sdp"
                 android:layout_marginEnd="@dimen/_24sdp"
                 android:src="@drawable/ic_right_arrow"
+                app:layout_constraintBottom_toBottomOf="@+id/about"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/about"
-                app:layout_constraintBottom_toBottomOf="@+id/about"/>
+                app:layout_constraintTop_toTopOf="@+id/about" />
 
             <View
                 android:id="@+id/view3"
                 android:layout_width="0dp"
-                android:layout_height="2dp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:background="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/about"
+                android:layout_height="0.9dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/dark_gray"
+                app:layout_constraintEnd_toEndOf="@+id/ic_right_arrow"
                 app:layout_constraintStart_toStartOf="@+id/about"
-                app:layout_constraintEnd_toEndOf="@+id/ic_right_arrow"/>
+                app:layout_constraintTop_toBottomOf="@+id/about" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/contact"
@@ -170,9 +175,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_24sdp"
                 android:text="@string/contact_us"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="@+id/topLayout"
-                app:layout_constraintTop_toBottomOf="@+id/view3"/>
+                app:layout_constraintTop_toBottomOf="@+id/view3" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ic_right_arrow4"
@@ -180,19 +186,19 @@
                 android:layout_height="@dimen/_24sdp"
                 android:layout_marginEnd="@dimen/_24sdp"
                 android:src="@drawable/ic_right_arrow"
+                app:layout_constraintBottom_toBottomOf="@+id/contact"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/contact"
-                app:layout_constraintBottom_toBottomOf="@+id/contact"/>
+                app:layout_constraintTop_toTopOf="@+id/contact" />
 
             <View
                 android:id="@+id/view4"
                 android:layout_width="0dp"
-                android:layout_height="2dp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:background="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/contact"
+                android:layout_height="0.9dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/dark_gray"
+                app:layout_constraintEnd_toEndOf="@+id/ic_right_arrow"
                 app:layout_constraintStart_toStartOf="@+id/my_profile"
-                app:layout_constraintEnd_toEndOf="@+id/ic_right_arrow"/>
+                app:layout_constraintTop_toBottomOf="@+id/contact" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/terms"
@@ -200,9 +206,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_24sdp"
                 android:text="@string/terms_and_conditions"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="@+id/topLayout"
-                app:layout_constraintTop_toBottomOf="@+id/view4"/>
+                app:layout_constraintTop_toBottomOf="@+id/view4" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ic_right_arrow5"
@@ -210,19 +217,19 @@
                 android:layout_height="@dimen/_24sdp"
                 android:layout_marginEnd="@dimen/_24sdp"
                 android:src="@drawable/ic_right_arrow"
+                app:layout_constraintBottom_toBottomOf="@+id/terms"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/terms"
-                app:layout_constraintBottom_toBottomOf="@+id/terms"/>
+                app:layout_constraintTop_toTopOf="@+id/terms" />
 
             <View
                 android:id="@+id/view5"
                 android:layout_width="0dp"
-                android:layout_height="2dp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:background="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/terms"
+                android:layout_height="0.9dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/dark_gray"
+                app:layout_constraintEnd_toEndOf="@+id/ic_right_arrow"
                 app:layout_constraintStart_toStartOf="@+id/terms"
-                app:layout_constraintEnd_toEndOf="@+id/ic_right_arrow"/>
+                app:layout_constraintTop_toBottomOf="@+id/terms" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/privacy"
@@ -230,9 +237,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_24sdp"
                 android:text="@string/privacy"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="@+id/topLayout"
-                app:layout_constraintTop_toBottomOf="@+id/view5"/>
+                app:layout_constraintTop_toBottomOf="@+id/view5" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ic_right_arrow6"
@@ -240,29 +248,30 @@
                 android:layout_height="@dimen/_24sdp"
                 android:layout_marginEnd="@dimen/_24sdp"
                 android:src="@drawable/ic_right_arrow"
+                app:layout_constraintBottom_toBottomOf="@+id/privacy"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/privacy"
-                app:layout_constraintBottom_toBottomOf="@+id/privacy"/>
+                app:layout_constraintTop_toTopOf="@+id/privacy" />
 
             <View
                 android:id="@+id/view6"
                 android:layout_width="0dp"
-                android:layout_height="2dp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:background="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/privacy"
+                android:layout_height="0.9dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/dark_gray"
+                app:layout_constraintEnd_toEndOf="@+id/ic_right_arrow"
                 app:layout_constraintStart_toStartOf="@+id/privacy"
-                app:layout_constraintEnd_toEndOf="@+id/ic_right_arrow"/>
+                app:layout_constraintTop_toBottomOf="@+id/privacy" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/faq"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_24sdp"
-                android:text="@string/privacy"
+                android:text="FAQ"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="@+id/topLayout"
-                app:layout_constraintTop_toBottomOf="@+id/view6"/>
+                app:layout_constraintTop_toBottomOf="@+id/view6" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ic_right_arrow7"
@@ -270,29 +279,30 @@
                 android:layout_height="@dimen/_24sdp"
                 android:layout_marginEnd="@dimen/_24sdp"
                 android:src="@drawable/ic_right_arrow"
+                app:layout_constraintBottom_toBottomOf="@+id/faq"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/faq"
-                app:layout_constraintBottom_toBottomOf="@+id/faq"/>
+                app:layout_constraintTop_toTopOf="@+id/faq" />
 
             <View
                 android:id="@+id/view7"
                 android:layout_width="0dp"
-                android:layout_height="2dp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:background="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/faq"
+                android:layout_height="0.9dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/dark_gray"
+                app:layout_constraintEnd_toEndOf="@+id/ic_right_arrow"
                 app:layout_constraintStart_toStartOf="@+id/faq"
-                app:layout_constraintEnd_toEndOf="@+id/ic_right_arrow"/>
+                app:layout_constraintTop_toBottomOf="@+id/faq" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/logout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_24sdp"
-                android:text="@string/privacy"
+                android:text="Logout"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="@+id/topLayout"
-                app:layout_constraintTop_toBottomOf="@+id/view7"/>
+                app:layout_constraintTop_toBottomOf="@+id/view7" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ic_right_arrow8"
@@ -300,12 +310,9 @@
                 android:layout_height="@dimen/_24sdp"
                 android:layout_marginEnd="@dimen/_24sdp"
                 android:src="@drawable/ic_right_arrow"
+                app:layout_constraintBottom_toBottomOf="@+id/logout"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/logout"
-                app:layout_constraintBottom_toBottomOf="@+id/logout"/>
-
-
-
+                app:layout_constraintTop_toTopOf="@+id/logout" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

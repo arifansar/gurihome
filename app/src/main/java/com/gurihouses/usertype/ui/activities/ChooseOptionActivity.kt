@@ -38,7 +38,7 @@ class ChooseOptionActivity : AppCompatActivity(), View.OnClickListener {
 
   R.id.btn_user ->{
 
-      val intent = Intent(this, FaqActivity::class.java)
+      val intent = Intent(this, EnterNumberActivity::class.java)
       intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
       intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
       intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK

@@ -39,5 +39,5 @@
     <string name="privacy">Privacy policy</string>
     <string name="about_gurihomes">About GuriHomes</string>
     <string name="verify_code">Verify code</string>
-    <string name="a_code_has_been_sent">A code has been sent to +27 234 556 7888 via SMS</string>
+    <string name="a_code_has_been_sent">A code has been sent to  +27 234 \n 556 7888 via SMS</string>
 </resources>
