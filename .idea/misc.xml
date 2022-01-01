@@ -4,21 +4,24 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Arif Ansari/AndroidStudioProjects/GuriHouses/app/src/main/res/drawable/bg_btn_blue.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/Arif Ansari/AndroidStudioProjects/GuriHouses/app/src/main/res/drawable/bg_const_layout.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/Arif Ansari/AndroidStudioProjects/GuriHouses/app/src/main/res/drawable/bg_edit_text.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/Arif Ansari/AndroidStudioProjects/GuriHouses/app/src/main/res/drawable/ic_profile_blue.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/Arif Ansari/AndroidStudioProjects/GuriHouses/app/src/main/res/drawable/ic_profile_gray.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/Arif Ansari/AndroidStudioProjects/GuriHouses/app/src/main/res/layout/activity_about_us.xml" value="0.13179347826086957" />
         <entry key="..\:/Users/Arif Ansari/AndroidStudioProjects/GuriHouses/app/src/main/res/layout/activity_choose_option.xml" value="0.16485507246376813" />
+        <entry key="..\:/Users/Arif Ansari/AndroidStudioProjects/GuriHouses/app/src/main/res/layout/activity_contact_us.xml" value="0.1" />
         <entry key="..\:/Users/Arif Ansari/AndroidStudioProjects/GuriHouses/app/src/main/res/layout/activity_enter_number.xml" value="0.1" />
+        <entry key="..\:/Users/Arif Ansari/AndroidStudioProjects/GuriHouses/app/src/main/res/layout/activity_faq.xml" value="0.16485507246376813" />
+        <entry key="..\:/Users/Arif Ansari/AndroidStudioProjects/GuriHouses/app/src/main/res/layout/activity_otp.xml" value="0.13179347826086957" />
+        <entry key="..\:/Users/Arif Ansari/AndroidStudioProjects/GuriHouses/app/src/main/res/layout/activity_privacy_policy.xml" value="0.13179347826086957" />
         <entry key="..\:/Users/Arif Ansari/AndroidStudioProjects/GuriHouses/app/src/main/res/layout/activity_sign_up.xml" value="0.16485507246376813" />
         <entry key="..\:/Users/Arif Ansari/AndroidStudioProjects/GuriHouses/app/src/main/res/layout/activity_splash.xml" value="0.10144927536231885" />
-        <entry key="app/src/main/res/layout/activity_enter_number.xml" value="0.24074074074074073" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.24074074074074073" />
-        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.24074074074074073" />
-        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.24074074074074073" />
-        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.24791666666666667" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.24791666666666667" />
-        <entry key="app/src/main/res/layout/fragment_notification.xml" value="0.24791666666666667" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.24791666666666667" />
-        <entry key="app/src/main/res/layout/fragment_recent.xml" value="0.24791666666666667" />
-        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.24791666666666667" />
+        <entry key="..\:/Users/Arif Ansari/AndroidStudioProjects/GuriHouses/app/src/main/res/layout/activity_terms_condition.xml" value="0.13179347826086957" />
+        <entry key="..\:/Users/Arif Ansari/AndroidStudioProjects/GuriHouses/app/src/main/res/layout/fragment_notification.xml" value="0.14175724637681159" />
+        <entry key="..\:/Users/Arif Ansari/AndroidStudioProjects/GuriHouses/app/src/main/res/layout/fragment_profile.xml" value="0.13179347826086957" />
+        <entry key="..\:/Users/Arif Ansari/AndroidStudioProjects/GuriHouses/app/src/main/res/layout/list_faq.xml" value="0.16485507246376813" />
+        <entry key="..\:/Users/Arif Ansari/AndroidStudioProjects/GuriHouses/app/src/main/res/layout/list_notification.xml" value="0.14175724637681159" />
       </map>
     </option>
   </component>

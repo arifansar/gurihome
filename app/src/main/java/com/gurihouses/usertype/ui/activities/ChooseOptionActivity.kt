@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.gurihouses.R
+import com.gurihouses.contactus.ui.activities.ContactUsActivity
 import com.gurihouses.getotp.ui.activities.EnterNumberActivity
 import com.gurihouses.databinding.ActivityChooseOptionBinding
+import com.gurihouses.faq.ui.activities.FaqActivity
+import com.gurihouses.notification.NotificationFragment
 
 class ChooseOptionActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -35,7 +38,7 @@ class ChooseOptionActivity : AppCompatActivity(), View.OnClickListener {
 
   R.id.btn_user ->{
 
-      val intent = Intent(this, EnterNumberActivity::class.java)
+      val intent = Intent(this, FaqActivity::class.java)
       intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
       intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
       intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -43,7 +46,6 @@ class ChooseOptionActivity : AppCompatActivity(), View.OnClickListener {
       finish()
   }
   }
-
-
     }
+
 }

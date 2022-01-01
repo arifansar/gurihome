@@ -15,4 +15,28 @@
     <string name="sign_in">Sign in</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="contact_us">Contact us</string>
+    <string name="send_your_inqury">Send your inqury</string>
+    <string name="our_team_will_get_in_touch_with_you_shortly">Our team will get in touch with you shortly</string>
+    <string name="your_name">Your Name</string>
+    <string name="email">Email</string>
+    <string name="email_address">Email address</string>
+    <string name="your_number">Your Number</string>
+    <string name="your_message">Enter your message</string>
+    <string name="submit">Submit</string>
+    <string name="quick_links">Quick Links</string>
+    <string name="mail_us">Mail Us</string>
+    <string name="call_us">Call Us</string>
+    <string name="faq">FAQ</string>
+    <string name="notification_title">Explore new properties</string>
+    <string name="notification_description">Explore newly added propoerties in your are and get your self a comtable experince</string>
+    <string name="notification">Notifications</string>
+    <string name="my_profile">My Profile</string>
+    <string name="recently_viewed">Recently viewed</string>
+    <string name="about">About GuriHouses</string>
+    <string name="terms_and_conditions">Terms and conditions</string>
+    <string name="privacy">Privacy policy</string>
+    <string name="about_gurihomes">About GuriHomes</string>
+    <string name="verify_code">Verify code</string>
+    <string name="a_code_has_been_sent">A code has been sent to +27 234 556 7888 via SMS</string>
 </resources>
