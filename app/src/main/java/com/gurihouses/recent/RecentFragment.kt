@@ -1,16 +1,20 @@
 package com.gurihouses.recent
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.gurihouses.R
+import com.gurihouses.databinding.FragmentRecentBinding
+import com.gurihouses.home.tabfragment.adapter.RoomSaleAdapter
+import com.gurihouses.home.tabfragment.bean.RoomSaleResponse
+import com.gurihouses.home.tabfragment.viewmodel.RoomSaleViewModel
+import com.gurihouses.propertydetails.PropertyDetailActivity
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
@@ -18,43 +22,130 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class RecentFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    lateinit var binding: FragmentRecentBinding
+    lateinit var vm : RoomSaleViewModel
+
+    companion object {
+        @JvmStatic
+        fun newInstance() =
+            RecentFragment().apply {
+                arguments = Bundle().apply {
+                }
+            }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recent, container, false)
+        binding = FragmentRecentBinding.inflate(layoutInflater)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RecentFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RecentFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initialization()
+        listener()
     }
+
+    private fun initialization() {
+        vm = ViewModelProvider(this)[RoomSaleViewModel::class.java]
+
+        binding.inclToolbar.ttitle.text = "Recently viewed"
+
+
+        loadSaleData()
+
+    }
+
+    private fun loadSaleData() {
+
+        val list = arrayListOf<RoomSaleResponse>()
+
+        list.add(
+            RoomSaleResponse(
+                "2 BHK in Cape Town ",
+                "Location: Cape town",
+                "","",
+                "Price: R1000",
+                "2BHK, Duplex, Apartment",
+                R.drawable.ic_room,"")
+        )
+        list.add(
+            RoomSaleResponse(
+                "2 BHK in Cape Town ",
+                "Location: Cape town",
+                "","",
+                "Price: R1000",
+                "2BHK, Duplex, Apartment",
+                R.drawable.room1,"")
+        )
+        list.add(
+            RoomSaleResponse(
+                "2 BHK in Cape Town ",
+                "Location: Cape town",
+                "","",
+                "Price: R1000",
+                "2BHK, Duplex, Apartment",
+                R.drawable.ic_room,"")
+        )
+
+
+
+
+        binding.recyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.recyclerView.setHasFixedSize(true)
+        binding.recyclerView.adapter = RoomSaleAdapter(context, list){
+
+            val mDetailScreen = Intent(context, PropertyDetailActivity::class.java)
+            Intent.FLAG_ACTIVITY_NEW_TASK
+            Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(mDetailScreen)
+            activity?.overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+        }
+
+
+//        vm.getSaleRooms()
+//        vm.mForgotResponse?.observe(viewLifecycleOwner, Observer {
+//
+//            if (it !=null){
+//
+//                loadUi(it)
+//            }
+//        })
+//
+//        vm.errorMsg?.observe(viewLifecycleOwner, Observer {
+//            if (it != null) {
+//
+//                context?.let { it1 -> CommonUtil.showMessage(it1, it.toString()) }
+//
+//            }
+//        })
+//
+//        vm.loadingStatus?.observe(viewLifecycleOwner, Observer {
+//            if (it == true) {
+//
+//                binding.progressBar.visibility = View.VISIBLE
+//            } else {
+//                binding.progressBar.visibility = View.GONE
+//            }
+//
+//        })
+
+    }
+
+    private fun loadUi(list: List<RoomSaleResponse>) {
+
+
+    }
+
+    private fun listener() {
+
+    }
+
+
 }

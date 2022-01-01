@@ -24,6 +24,7 @@ class SignUpActivity : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout)
             finish()
 
 

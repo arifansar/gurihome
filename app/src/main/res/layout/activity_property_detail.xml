@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/inl_detail_toolbar"
+            layout="@layout/chat_toolbar_layout" />
+
+
+        <RelativeLayout
+            android:id="@+id/rl_view1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/inl_detail_toolbar">
+
+            <com.gurihouses.autoscroll.AutoScrollViewPager
+                android:id="@+id/view_pager2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout1"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_below="@+id/view_pager2"
+                android:layout_centerHorizontal="true"
+                android:backgroundTint="@android:color/transparent"
+                app:tabBackground="@drawable/tab_selector"
+                app:tabGravity="center"
+                app:tabIndicatorHeight="0dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/inner_relative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_view1">
+
+            <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="14dp"
+                card_view:cardCornerRadius="@dimen/_12sdp"
+                card_view:cardElevation="0.7dp">
+
+                <RelativeLayout
+                    android:id="@+id/inner_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/sale_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/calibribold"
+                        android:text="2 BHK Flat in South Africa "
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14ssp" />
+
+                    <TextView
+                        android:id="@+id/sale_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/sale_name"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:fontFamily="@font/calibriregular"
+                        android:padding="@dimen/_2sdp"
+                        android:text="Location: South Africa"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp" />
+
+
+                    <TextView
+                        android:id="@+id/property_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/sale_location"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:fontFamily="@font/calibriregular"
+                        android:padding="@dimen/_2sdp"
+                        android:text="Type: Bunglow"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <TextView
+                        android:id="@+id/property_rent_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/property_type"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:fontFamily="@font/calibriregular"
+                        android:padding="@dimen/_2sdp"
+                        android:text="Listed for: Rent out"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <TextView
+                        android:id="@+id/property_room_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/property_rent_out"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:fontFamily="@font/calibriregular"
+                        android:padding="@dimen/_2sdp"
+                        android:text="Number of rooms: 2"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <TextView
+                        android:id="@+id/property_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/property_room_number"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:fontFamily="@font/calibribold"
+                        android:padding="@dimen/_2sdp"
+                        android:text="Price: R1000"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/_12ssp" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/property_price"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="@dimen/_16sdp"
+                        android:backgroundTint="@color/gray"
+                        card_view:cardCornerRadius="@dimen/_12sdp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/property_desc_tilte"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:fontFamily="@font/calibriregular"
+                                android:padding="@dimen/_10sdp"
+                                android:text="Description"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_14ssp" />
+
+                            <TextView
+                                android:id="@+id/property_desc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/calibriregular"
+                                android:padding="@dimen/_5sdp"
+                                android:text="@string/text_desc"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_14ssp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_below="@+id/inner_relative">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/owner_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibriregular"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:background="@drawable/button_bg"
+                app:backgroundTint="@null"
+                app:icon="@drawable/ic_call"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/white"
+                android:text="Call owner"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/owner_chat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:fontFamily="@font/calibriregular"
+                android:background="@drawable/button_bg"
+                app:backgroundTint="@null"
+                android:layout_alignParentEnd="true"
+                android:textAllCaps="false"
+                app:icon="@drawable/ic_owner_message"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12ssp"
+                android:text="Chat with owner"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+</androidx.core.widget.NestedScrollView>

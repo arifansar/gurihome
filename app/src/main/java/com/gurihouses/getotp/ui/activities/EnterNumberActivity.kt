@@ -22,6 +22,7 @@ class EnterNumberActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun listeners() {
         binding.signUp.setOnClickListener(this)
+        binding.btnOtp.setOnClickListener(this)
     }
 
     private fun initialization() {
@@ -32,13 +33,25 @@ class EnterNumberActivity : AppCompatActivity(), View.OnClickListener {
 
         when (v?.id){
 
+            R.id.btn_otp->{
+
+                val intent = Intent(this, SignUpActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+                finish()
+
+            }
+
            R.id.sign_up ->{
                val intent = Intent(this, SignUpActivity::class.java)
                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                startActivity(intent)
-               //todo need to chng
+               overridePendingTransition(R.anim.fadein, R.anim.fadeout)
                finish()
            }
 
