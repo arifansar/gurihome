@@ -26,33 +26,33 @@ class RoomSaleViewModel():ViewModel() {
 
     fun getSaleRooms() {
 
-        loadingStatus?.postValue(true)
-        apiInterface.getHeroes().enqueue(object : retrofit2.Callback<List<RoomSaleResponse>> {
-
-            override fun onResponse(call: Call<List<RoomSaleResponse>>, response: Response<List<RoomSaleResponse>>) {
-
-                val url = response.raw().request.url
-                Log.d("mainurl", url.toString())
-                if (response.isSuccessful) {
-                    loadingStatus?.value = false
-                    mForgotResponse?.value = response.body()
-
-                } else {
-                    loadingStatus?.value = false
-                    errorMsg?.value = "no data available"
-                }
-
-            }
-
-            override fun onFailure(call: Call<List<RoomSaleResponse>>, t: Throwable) {
-                // data.value = null
-                Log.d("mainurl", t.toString())
-                loadingStatus?.value = false
-                errorMsg?.value = t.message
-
-            }
-        })
-
+//        loadingStatus?.postValue(true)
+//        apiInterface.getHeroes().enqueue(object : retrofit2.Callback<List<RoomSaleResponse>> {
+//
+//            override fun onResponse(call: Call<List<RoomSaleResponse>>, response: Response<List<RoomSaleResponse>>) {
+//
+//                val url = response.raw().request.url
+//                Log.d("mainurl", url.toString())
+//                if (response.isSuccessful) {
+//                    loadingStatus?.value = false
+//                    mForgotResponse?.value = response.body()
+//
+//                } else {
+//                    loadingStatus?.value = false
+//                    errorMsg?.value = "no data available"
+//                }
+//
+//            }
+//
+//            override fun onFailure(call: Call<List<RoomSaleResponse>>, t: Throwable) {
+//                // data.value = null
+//                Log.d("mainurl", t.toString())
+//                loadingStatus?.value = false
+//                errorMsg?.value = t.message
+//
+//            }
+//        })
+//
 
     }
 

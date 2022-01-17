@@ -27,18 +27,17 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"
             android:layout_below="@id/rl_search"
-            android:background="@drawable/tab_bg"
             android:layout_marginStart="@dimen/_16sdp"
             android:layout_marginEnd="@dimen/_16sdp"
+            android:background="@drawable/tab_bg"
+            app:tabBackground="@drawable/tab_color_selector"
             app:tabGravity="fill"
             app:tabIndicatorColor="@null"
             app:tabIndicatorHeight="0dp"
             app:tabMode="fixed"
             app:tabRippleColor="@null"
-            app:tabBackground="@drawable/tab_color_selector"
-            app:tabTextColor="@color/white"
             app:tabSelectedTextColor="@color/black"
-            />
+            app:tabTextColor="@color/white" />
 
 
         <androidx.viewpager2.widget.ViewPager2

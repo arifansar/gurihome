@@ -9,6 +9,7 @@ import android.text.TextUtils
 import android.util.Log
 import android.util.Patterns
 import android.view.View
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.webkit.MimeTypeMap
 import android.widget.TextView
@@ -82,13 +83,17 @@ object CommonUtil {
 
 
 
-    fun hideKeyboard(activity: Activity) {
-        val imm = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        var view = activity.currentFocus
-        if (view == null) {
-            view = View(activity)
+    fun hideKeyboard(activity: Context, view: View) {
+        try {
+            val imm = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(
+                view.windowToken,
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+            )
+        } catch (e: Exception) {
+            // TODO: handle exception
+            e.printStackTrace()
         }
-        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
 

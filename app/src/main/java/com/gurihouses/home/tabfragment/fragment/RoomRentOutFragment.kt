@@ -132,7 +132,6 @@ class RoomRentOutFragment : Fragment() {
             activity?.overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         }
 
-
 //        vm.getSaleRooms()
 //        vm.mForgotResponse?.observe(viewLifecycleOwner, Observer {
 //
