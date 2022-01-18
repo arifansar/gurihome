@@ -150,7 +150,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
     private fun getSignUpApi() {
 
         mViewModel.getSignUpDetails(
-            "user",
+            "owner",
             binding.editFirstName.text.toString().trim(),
             binding.editLastName.text.toString().trim(),
             "7992377287",//fill from edittext
