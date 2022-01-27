@@ -26,7 +26,6 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         val view = binding.root
         setContentView(view)
 
-
         initialized()
         listener()
       //  getViewModel()
@@ -46,7 +45,6 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-
     private fun initialized() {
 
     }
@@ -54,12 +52,10 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
     private fun listener() {
 
         binding.btnNext.setOnClickListener(this)
-
     }
 
     private fun getViewModel() {
 
-        /* Normal Sign up */
         mViewModel.signUpResponse?.observe(this, Observer {
             if (it != null) {
 
@@ -76,7 +72,6 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                     overridePendingTransition(R.anim.fadein, R.anim.fadeout)
                     finish()
                     CommonUtil.showMessage(this, response.message)
-
                 }
 
             }
@@ -131,6 +126,22 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
             CommonUtil.showMessage(this, "Enter last name")
             CommonUtil.hideKeyboard(this, binding.editLastName)
 
+        }
+        else if (!Validation.isStringValue(binding.editMobile.text.toString())) {
+
+            isError = true
+            binding.editMobile.requestFocus()
+            CommonUtil.showMessage(this, "Enter Mobile Number")
+            CommonUtil.hideKeyboard(this, binding.editMobile)
+
+
+        }
+        else if (!Validation.isStringValue(binding.editEmail.text.toString())) {
+
+            isError = true
+            binding.editEmail.requestFocus()
+            CommonUtil.showMessage(this, "Enter Email")
+            CommonUtil.hideKeyboard(this, binding.editEmail)
 
         }
 
@@ -153,11 +164,10 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
             "owner",
             binding.editFirstName.text.toString().trim(),
             binding.editLastName.text.toString().trim(),
-            "7992377287",//fill from edittext
+            binding.editMobile.text.toString().trim(),
             "temp",
-            "sudhir125@gmail.com"//fill from edittext
+            binding.editEmail.text.toString().trim()//fill from edittext
         )
     }
-
 
 }

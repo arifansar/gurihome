@@ -72,6 +72,7 @@
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/edit_first_name"
                     android:layout_width="0dp"
+                    android:paddingStart="@dimen/_6sdp"
                     android:layout_height="@dimen/_35sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginEnd="@dimen/_20sdp"
@@ -98,6 +99,7 @@
                     android:id="@+id/edit_last_name"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_35sdp"
+                    android:paddingStart="@dimen/_6sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginEnd="@dimen/_20sdp"
                     android:background="@drawable/bg_edit_text"
@@ -131,6 +133,36 @@
                     app:layout_constraintStart_toStartOf="@id/edit_last_name"
                     app:layout_constraintTop_toBottomOf="@+id/text_number">
 
+                    <com.hbb20.CountryCodePicker
+                        android:id="@+id/country"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:textColorHint="@color/black"
+                        app:defaultCode="91"
+                        app:showFlag="false"
+                        app:hideNameCode="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <EditText
+                        android:id="@+id/editMobile"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_6sdp"
+                        android:layout_marginEnd="@dimen/_12sdp"
+                        android:layout_marginStart="1dp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp"
+                        android:inputType="number"
+                        android:maxLength="12"
+                        android:background="@null"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/country"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -151,8 +183,10 @@
                     android:id="@+id/edit_email"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_35sdp"
+                    android:paddingStart="@dimen/_6sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginEnd="@dimen/_20sdp"
+                    android:inputType="textEmailAddress"
                     android:background="@drawable/bg_edit_text"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/text_first_name"

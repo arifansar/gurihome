@@ -21,6 +21,7 @@
     <string name="our_team_will_get_in_touch_with_you_shortly">Our team will get in touch with you shortly</string>
     <string name="your_name">Your Name</string>
     <string name="email">Email</string>
+    <string name="email_">Email:</string>
     <string name="email_address">Email address</string>
     <string name="your_number">Your Number</string>
     <string name="your_message">Enter your message</string>
@@ -40,6 +41,12 @@
     <string name="about_gurihomes">About GuriHomes</string>
     <string name="verify_code">Verify code</string>
     <string name="a_code_has_been_sent">A code has been sent to  +27 234 \n 556 7888 via SMS</string>
+    <string name="change_picture">Change picture</string>
+    <string name="name">Name:</string>
+    <string name="mobile_">Mobile:</string>
+    <string name="gender_">Gender:</string>
+    <string name="male">Male</string>
+    <string name="update_profile">Update Profile</string>
     <string name="btb_post_property">Post property</string>
 
 

@@ -7,23 +7,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.gurihouses.R
 import com.gurihouses.about.ui.activities.AboutUsActivity
-import com.gurihouses.chat.bottomchat.ui.ChatActivity
 import com.gurihouses.contactus.ui.activities.ContactUsActivity
 import com.gurihouses.databinding.FragmentProfileBinding
 import com.gurihouses.faq.ui.activities.FaqActivity
 import com.gurihouses.privacypolicy.ui.activities.PrivacyPolicyActivity
+import com.gurihouses.myprofile.ui.viewmodels.ProfileViewModel
 import com.gurihouses.termscondition.ui.activities.TermsConditionActivity
+import com.gurihouses.util.CommonUtil
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class ProfileFragment : Fragment(),View.OnClickListener {
 
     lateinit var binding: FragmentProfileBinding
+    private val mViewModel: ProfileViewModel by viewModels()
 
 
     companion object {
@@ -128,10 +128,51 @@ class ProfileFragment : Fragment(),View.OnClickListener {
               Toast.makeText(activity,"Logout not implemented yet",Toast.LENGTH_LONG).show()
 
             }
-
-
         }
+    }
 
+    fun getProfileViewModel(){
+
+        mViewModel.profileResponse?.observe(this,{
+
+            if (it != null) {
+
+                val response = it
+                val statusCode = response.status
+                val message = response.message
+                if (statusCode) {
+
+                    activity?.let { it1 -> CommonUtil.showMessage(it1, response.message) }
+                    binding.name.setText(response.data.fname)
+
+                }
+
+            }
+
+        })
+        mViewModel.errorMsg?.observe(this, Observer {
+            if (it != null) {
+
+                activity?.let { it1 -> CommonUtil.showMessage(it1, it.toString()) }
+
+            }
+
+        })
+
+        mViewModel.loadingStatus?.observe(this, Observer {
+            if (it == true) {
+                binding.progressBar.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.GONE
+            }
+
+        })
+
+
+    }
+
+    private fun getProfileApi(){
+    mViewModel.getProfile("10")
     }
 
 }
