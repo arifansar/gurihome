@@ -80,7 +80,7 @@ class OtpActivity : AppCompatActivity() {
     }
 
     private fun getViewModel(){
-        mViewModel.otpResponse?.observe(this,{
+        mViewModel.otpResponse?.observe(this) {
 
             if (it != null) {
 
@@ -102,7 +102,7 @@ class OtpActivity : AppCompatActivity() {
 
             }
 
-        })
+        }
 
         mViewModel.errorMsg?.observe(this, Observer {
             if (it != null) {

@@ -2,7 +2,10 @@ package com.gurihouses.network
 
 import android.content.Context
 import com.gurihouses.getotp.ui.activities.model.LoginResponse
+import com.gurihouses.home.tabfragment.bean.HomeTabResponse
+import com.gurihouses.home.tabfragment.bean.PropertyByUserResponse
 import com.gurihouses.home.tabfragment.bean.RoomSaleResponse
+import com.gurihouses.home.tabfragment.bean.StateResponse
 import com.gurihouses.otp.ui.activities.model.OtpResponse
 import com.gurihouses.profile.models.ProfileResponse
 import com.gurihouses.signup.ui.activities.model.SignUpResponse
@@ -11,11 +14,6 @@ import retrofit2.http.*
 
 
 interface ApiInterface {
-
-
-
-
-
 
 
     @POST(ApiConstants.API_SIGNUP)

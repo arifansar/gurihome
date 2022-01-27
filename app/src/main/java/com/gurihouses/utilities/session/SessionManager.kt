@@ -48,9 +48,9 @@ class SessionManager(context: Context) {
         editor.clear()
         editor.apply()
         val intent = Intent(appContext, EnterNumberActivity::class.java)
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         appContext.startActivity(intent)
     }
 }
