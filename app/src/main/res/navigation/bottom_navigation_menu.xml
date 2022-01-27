@@ -19,13 +19,13 @@
         android:name="com.gurihouses.chat.bottomchat.fragment.ChatFragment"
         android:label="chatFragment" >
         <action
-            android:id="@+id/action_chatFragment_to_recentFragment"
+            android:id="@+id/action_chatFragment_to_postPropertyFragment"
             app:destination="@id/recent" />
     </fragment>
     <fragment
         android:id="@+id/recent"
-        android:name="com.gurihouses.recent.RecentFragment"
-        android:label="RecentFragment" >
+        android:name="com.gurihouses.postproperty.PostPropertyFragment"
+        android:label="PostPropertyFragment" >
         <action
             android:id="@+id/action_recentFragment_to_notificationFragment"
             app:destination="@id/notification" />

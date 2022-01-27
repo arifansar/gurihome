@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName
 
 data class RoomSaleResponse(
 
+
+
     @SerializedName("name")
     @Expose
     var name: String,

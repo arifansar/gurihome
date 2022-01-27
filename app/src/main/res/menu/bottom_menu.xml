@@ -13,8 +13,9 @@
 
     <item
         android:id="@+id/recent"
-        android:icon="@drawable/ic_recent_gray"
-        android:title="Recent" />
+        android:icon="@drawable/ic_create_post"
+        android:title="Recent"
+        android:iconTint="@color/dark_gray"/>
 
     <item
         android:id="@+id/notification"

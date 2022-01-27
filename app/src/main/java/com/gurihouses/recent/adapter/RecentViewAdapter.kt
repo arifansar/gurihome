@@ -1,4 +1,4 @@
-package com.gurihouses.home.tabfragment.adapter
+package com.gurihouses.recent.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -10,11 +10,10 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gurihouses.R
-import com.gurihouses.home.tabfragment.bean.PropertyByUserResponse
 import com.gurihouses.home.tabfragment.bean.RoomSaleResponse
-import com.gurihouses.home.tabfragment.bean.UserProperty
 
-class RoomSaleAdapter(val ctx: Context?, val list: List<UserProperty>, val listener:(UserProperty)->Unit): RecyclerView.Adapter<RoomSaleAdapter.ViewHolder>() {
+class RecentViewAdapter(val ctx: Context?, val list: List<RoomSaleResponse>, val listener:(RoomSaleResponse)->Unit): RecyclerView.Adapter<RecentViewAdapter.ViewHolder>()  {
+
 
 
     //this method is returning the view for each item in the list
@@ -27,10 +26,10 @@ class RoomSaleAdapter(val ctx: Context?, val list: List<UserProperty>, val liste
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val sub = list[position]
-        holder.saleName.text = sub.title
-        holder.saleLocation.text = "Location: ${sub.location}"
-        holder.salePrice.text = "Price : ${sub.price}"
-        holder.saleBhk.text = "Rooms : ${sub.rooms}"
+        holder.saleName.text = sub.name
+        holder.saleLocation.text = sub.realname
+        holder.salePrice.text = sub.createdby
+        holder.saleBhk.text = sub.publisher
         Glide.with(ctx!!).load(R.drawable.ic_room).into(holder.roomImage)
 
         holder.mMain.setOnClickListener {

@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <RelativeLayout
             android:id="@+id/rl_search"
             android:layout_width="match_parent"
@@ -21,30 +22,57 @@
                 layout="@layout/home_search_view_layout" />
         </RelativeLayout>
 
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_45sdp"
-            android:layout_below="@id/rl_search"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:layout_marginEnd="@dimen/_16sdp"
-            android:background="@drawable/tab_bg"
-            app:tabBackground="@drawable/tab_color_selector"
-            app:tabGravity="fill"
-            app:tabIndicatorColor="@null"
-            app:tabIndicatorHeight="0dp"
-            app:tabMode="fixed"
-            app:tabRippleColor="@null"
-            app:tabSelectedTextColor="@color/black"
-            app:tabTextColor="@color/white" />
-
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewPager"
+        <RelativeLayout
+            android:id="@+id/rl_main_tab"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/tab" />
+            android:layout_below="@id/rl_search"
+            android:visibility="visible">
+
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:background="@drawable/tab_bg"
+                app:tabBackground="@drawable/tab_color_selector"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@null"
+                app:tabIndicatorHeight="0dp"
+                app:tabMode="fixed"
+                android:visibility="gone"
+                app:tabRippleColor="@null"
+                app:tabSelectedTextColor="@color/black"
+                app:tabTextColor="@color/white" />
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/refresh_page"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tab">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/tab"
+                    android:layout_marginTop="@dimen/_5sdp" />
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/txt_no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/calibribold"
+            android:text="Data not available"
+            android:textSize="@dimen/_16ssp"
+            android:visibility="gone" />
 
 
     </RelativeLayout>

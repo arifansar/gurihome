@@ -29,20 +29,20 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
 
         initialized()
         listener()
-        getViewModel()
+      //  getViewModel()
 
-//        binding.btnNext.setOnClickListener {
-//
-//            val intent = Intent(this, MainActivity::class.java)
-//            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-//            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-//            startActivity(intent)
-//            overridePendingTransition(R.anim.fadein, R.anim.fadeout)
-//            finish()
-//
-//
-//        }
+        binding.btnNext.setOnClickListener {
+
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+            finish()
+
+
+        }
 
     }
 

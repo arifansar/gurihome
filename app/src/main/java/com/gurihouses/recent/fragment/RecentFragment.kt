@@ -1,4 +1,4 @@
-package com.gurihouses.recent
+package com.gurihouses.recent.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -14,6 +14,7 @@ import com.gurihouses.home.tabfragment.adapter.RoomSaleAdapter
 import com.gurihouses.home.tabfragment.bean.RoomSaleResponse
 import com.gurihouses.home.tabfragment.viewmodel.RoomSaleViewModel
 import com.gurihouses.propertydetails.PropertyDetailActivity
+import com.gurihouses.recent.adapter.RecentViewAdapter
 
 
 /**
@@ -99,7 +100,7 @@ class RecentFragment : Fragment() {
         binding.recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.adapter = RoomSaleAdapter(context, list){
+        binding.recyclerView.adapter = RecentViewAdapter(context, list){
 
             val mDetailScreen = Intent(context, PropertyDetailActivity::class.java)
             Intent.FLAG_ACTIVITY_NEW_TASK
@@ -109,39 +110,9 @@ class RecentFragment : Fragment() {
         }
 
 
-//        vm.getSaleRooms()
-//        vm.mForgotResponse?.observe(viewLifecycleOwner, Observer {
-//
-//            if (it !=null){
-//
-//                loadUi(it)
-//            }
-//        })
-//
-//        vm.errorMsg?.observe(viewLifecycleOwner, Observer {
-//            if (it != null) {
-//
-//                context?.let { it1 -> CommonUtil.showMessage(it1, it.toString()) }
-//
-//            }
-//        })
-//
-//        vm.loadingStatus?.observe(viewLifecycleOwner, Observer {
-//            if (it == true) {
-//
-//                binding.progressBar.visibility = View.VISIBLE
-//            } else {
-//                binding.progressBar.visibility = View.GONE
-//            }
-//
-//        })
-
     }
 
-    private fun loadUi(list: List<RoomSaleResponse>) {
 
-
-    }
 
     private fun listener() {
 

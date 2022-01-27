@@ -16,13 +16,14 @@ class TabFragmentAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle)
     override fun createFragment(position: Int): Fragment {
         when (position) {
             0 -> {
-                return RoomSaleFragment.newInstance()
-            }
-            1 -> {
                 return RoomRentOutFragment.newInstance()
             }
+            1 -> {
+                return RoomSaleFragment.newInstance()
+
+            }
         }
-        return RoomSaleFragment.newInstance()
+        return RoomRentOutFragment.newInstance()
     }
     override fun getItemCount(): Int {
         return TAB_COUNT

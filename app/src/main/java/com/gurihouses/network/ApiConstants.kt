@@ -8,6 +8,9 @@ class ApiConstants {
 
         // Auth
         const val API_SIGNUP = "signup"
+        const val API_HOME_TAB = "listingType"
+        const val API_STATE = "getState"
+        const val API_USER_PROPERTY = "propertyList"
 
 
 

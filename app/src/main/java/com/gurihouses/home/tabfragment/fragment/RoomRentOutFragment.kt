@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gurihouses.R
@@ -13,8 +15,11 @@ import com.gurihouses.chat.bottomchat.ui.ChatActivity
 import com.gurihouses.databinding.FragmentRoomRentOutBinding
 import com.gurihouses.home.tabfragment.adapter.RoomSaleAdapter
 import com.gurihouses.home.tabfragment.bean.RoomSaleResponse
+import com.gurihouses.home.tabfragment.bean.UserProperty
 import com.gurihouses.home.tabfragment.viewmodel.RoomSaleViewModel
+import com.gurihouses.home.tabfragment.viewmodel.UserPropertyViewModel
 import com.gurihouses.propertydetails.PropertyDetailActivity
+import com.gurihouses.util.CommonUtil
 
 /**
  * A simple [Fragment] subclass.
@@ -25,6 +30,7 @@ class RoomRentOutFragment : Fragment() {
 
     lateinit var binding: FragmentRoomRentOutBinding
     lateinit var vm : RoomSaleViewModel
+    val mUserViewModel : UserPropertyViewModel by viewModels()
 
 
     companion object {
@@ -55,75 +61,58 @@ class RoomRentOutFragment : Fragment() {
     }
 
     private fun initialization() {
-        vm = ViewModelProvider(this)[RoomSaleViewModel::class.java]
-
-        loadSaleData()
+        loadUserProperty()
 
     }
 
-    private fun loadSaleData() {
+    private fun loadUserProperty() {
+        mUserViewModel.getUserPropertyDetails()
+        /* User Property list */
+        mUserViewModel.mUserPropertyResponse?.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
 
-        val list = arrayListOf<RoomSaleResponse>()
+                val response = it
+                val statusCode = response.status
+                val message = response.message
+                if (statusCode) {
 
-        list.add(
-            RoomSaleResponse(
-                "2 BHK in Cape Town ",
-                "Location: Cape town",
-                "","",
-                "Price: R1000",
-                "2BHK, Duplex, Apartment",
-                R.drawable.ic_room,"")
-        )
-        list.add(
-            RoomSaleResponse(
-                "2 BHK in Cape Town ",
-                "Location: Cape town",
-                "","",
-                "Price: R1000",
-                "2BHK, Duplex, Apartment",
-                R.drawable.room1,"")
-        )
-        list.add(
-            RoomSaleResponse(
-                "2 BHK in Cape Town ",
-                "Location: Cape town",
-                "","",
-                "Price: R1000",
-                "2BHK, Duplex, Apartment",
-                R.drawable.ic_room,"")
-        )
-        list.add(
-            RoomSaleResponse(
-                "2 BHK in Cape Town ",
-                "Location: Cape town",
-                "","",
-                "Price: R1000",
-                "2BHK, Duplex, Apartment",
-                R.drawable.room1,"")
-        )
-        list.add(
-            RoomSaleResponse(
-                "2 BHK in Cape Town ",
-                "Location: Cape town",
-                "","",
-                "Price: R1000",
-                "2BHK, Duplex, Apartment",
-                R.drawable.ic_room,"")
-        )
-        list.add(
-            RoomSaleResponse(
-                "2 BHK in Cape Town ",
-                "Location: Cape town",
-                "","",
-                "Price: R1000",
-                "2BHK, Duplex, Apartment",
-                R.drawable.room1,"")
-        )
+                    if (response.data.isNotEmpty()) {
+                        setUpUserProperty(response.data)
+                    }
+
+                }
+
+            }
+
+        })
+
+        mUserViewModel.errorMsg?.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+
+                CommonUtil.showMessage(requireContext(), it.toString())
+
+            }
+
+        })
+
+//        mUserViewModel.loadingStatus?.observe(viewLifecycleOwner, Observer {
+//            if (it == true) {
+//                binding.progressBar.visibility = View.VISIBLE
+//            } else {
+//                binding.progressBar.visibility = View.GONE
+//            }
+//
+//        })
+
+
+    }
+
+    private fun setUpUserProperty(data: List<UserProperty>) {
 
         binding.recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.adapter = RoomSaleAdapter(context, list){
+        binding.recyclerView.adapter = RoomSaleAdapter(context, data){
 
             val mDetailScreen = Intent(context, PropertyDetailActivity::class.java)
             Intent.FLAG_ACTIVITY_NEW_TASK
@@ -132,39 +121,10 @@ class RoomRentOutFragment : Fragment() {
             activity?.overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         }
 
-//        vm.getSaleRooms()
-//        vm.mForgotResponse?.observe(viewLifecycleOwner, Observer {
-//
-//            if (it !=null){
-//
-//                loadUi(it)
-//            }
-//        })
-//
-//        vm.errorMsg?.observe(viewLifecycleOwner, Observer {
-//            if (it != null) {
-//
-//                context?.let { it1 -> CommonUtil.showMessage(it1, it.toString()) }
-//
-//            }
-//        })
-//
-//        vm.loadingStatus?.observe(viewLifecycleOwner, Observer {
-//            if (it == true) {
-//
-//                binding.progressBar.visibility = View.VISIBLE
-//            } else {
-//                binding.progressBar.visibility = View.GONE
-//            }
-//
-//        })
 
     }
 
-    private fun loadUi(list: List<RoomSaleResponse>) {
 
-
-    }
 
     private fun listener() {
 

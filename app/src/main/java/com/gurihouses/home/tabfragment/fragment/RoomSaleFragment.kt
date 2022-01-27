@@ -6,14 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gurihouses.R
 import com.gurihouses.databinding.FragmentRoomSaleBinding
 import com.gurihouses.home.tabfragment.adapter.RoomSaleAdapter
 import com.gurihouses.home.tabfragment.bean.RoomSaleResponse
+import com.gurihouses.home.tabfragment.bean.UserProperty
 import com.gurihouses.home.tabfragment.viewmodel.RoomSaleViewModel
+import com.gurihouses.home.tabfragment.viewmodel.UserPropertyViewModel
 import com.gurihouses.propertydetails.PropertyDetailActivity
 import com.gurihouses.util.CommonUtil
 
@@ -25,7 +27,9 @@ import com.gurihouses.util.CommonUtil
 class RoomSaleFragment : Fragment() {
 
     lateinit var binding: FragmentRoomSaleBinding
-    lateinit var vm : RoomSaleViewModel
+    lateinit var vm: RoomSaleViewModel
+    val mUserViewModel: UserPropertyViewModel by viewModels()
+    var mSaleList = arrayListOf<UserProperty>()
 
     companion object {
         @JvmStatic
@@ -39,7 +43,8 @@ class RoomSaleFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View {
+        savedInstanceState: Bundle?
+    ): View {
 
         // Inflate the layout for this fragment
         binding = FragmentRoomSaleBinding.inflate(layoutInflater)
@@ -57,69 +62,87 @@ class RoomSaleFragment : Fragment() {
 
 
     private fun initialization() {
-        vm = ViewModelProvider(this)[RoomSaleViewModel::class.java]
+        //vm = ViewModelProvider(this)[RoomSaleViewModel::class.java]
 
-        loadSaleData()
+        // loadSaleData()
+        loadUserProperty()
 
     }
 
-    private fun loadSaleData() {
+    private fun loadUserProperty() {
+        mUserViewModel.getUserPropertyDetails()
+        /* User Property list */
+        mUserViewModel.mUserPropertyResponse?.observe(viewLifecycleOwner, { it ->
+            if (it != null) {
 
-        val list = arrayListOf<RoomSaleResponse>()
+                val statusCode = it.status
+                val message = it.message
+                if (statusCode) {
 
-        list.add(
-            RoomSaleResponse(
-                "2 BHK in Cape Town ",
-                "Location: Cape town",
-                "","",
-                "Price: R1000",
-            "2BHK, Duplex, Apartment",
-            R.drawable.ic_room,""))
-        list.add(
-            RoomSaleResponse(
-                "2 BHK in Cape Town ",
-                "Location: Cape town",
-                "","",
-                "Price: R1000",
-                "2BHK, Duplex, Apartment",
-                R.drawable.room1,""))
-        list.add(
-            RoomSaleResponse(
-                "2 BHK in Cape Town ",
-                "Location: Cape town",
-                "","",
-                "Price: R1000",
-                "2BHK, Duplex, Apartment",
-                R.drawable.ic_room,""))
-        list.add(
-            RoomSaleResponse(
-                "2 BHK in Cape Town ",
-                "Location: Cape town",
-                "","",
-                "Price: R1000",
-                "2BHK, Duplex, Apartment",
-                R.drawable.room1,""))
-        list.add(
-            RoomSaleResponse(
-                "2 BHK in Cape Town ",
-                "Location: Cape town",
-                "","",
-                "Price: R1000",
-                "2BHK, Duplex, Apartment",
-                R.drawable.ic_room,""))
-        list.add(
-            RoomSaleResponse(
-                "2 BHK in Cape Town ",
-                "Location: Cape town",
-                "","",
-                "Price: R1000",
-                "2BHK, Duplex, Apartment",
-                R.drawable.room1,""))
+                    if (it.data.isNotEmpty()) {
+
+                        it.data.forEach {
+
+                            if (it.listing_type == "Sale") {
+
+                                mSaleList.add(
+                                    UserProperty(
+                                        it.id,
+                                        it.owner_id,
+                                        it.title,
+                                        it.location,
+                                        it.price,
+                                        it.des,
+                                        it.listing_type,
+                                        it.property_type,
+                                        it.image,
+                                        it.rooms,
+                                        it.created_at,
+                                        it.code,
+                                        it.status,
+                                        it.approved
+                                    )
+                                )
+                            }
+
+                        }
+                        setUpUserProperty(mSaleList)
+
+                    }
+
+                }
+
+            }
+
+        })
+
+        mUserViewModel.errorMsg?.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+
+                CommonUtil.showMessage(requireContext(), it.toString())
+
+            }
+
+        })
+
+//        mUserViewModel.loadingStatus?.observe(viewLifecycleOwner, Observer {
+//            if (it == true) {
+//                binding.progressBar.visibility = View.VISIBLE
+//            } else {
+//                binding.progressBar.visibility = View.GONE
+//            }
+//
+//        })
+
+
+    }
+
+    private fun setUpUserProperty(data: List<UserProperty>) {
 
         binding.recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.adapter = RoomSaleAdapter(context, list){
+        binding.recyclerView.adapter = RoomSaleAdapter(context, data) {
 
             val mDetailScreen = Intent(context, PropertyDetailActivity::class.java)
             Intent.FLAG_ACTIVITY_NEW_TASK
@@ -129,35 +152,8 @@ class RoomSaleFragment : Fragment() {
 
         }
 
-
-//        vm.getSaleRooms()
-//        vm.mForgotResponse?.observe(viewLifecycleOwner, Observer {
-//
-//            if (it !=null){
-//
-//                loadUi(it)
-//            }
-//        })
-//
-//        vm.errorMsg?.observe(viewLifecycleOwner, Observer {
-//            if (it != null) {
-//
-//                context?.let { it1 -> CommonUtil.showMessage(it1, it.toString()) }
-//
-//            }
-//        })
-//
-//        vm.loadingStatus?.observe(viewLifecycleOwner, Observer {
-//            if (it == true) {
-//
-//                binding.progressBar.visibility = View.VISIBLE
-//            } else {
-//                binding.progressBar.visibility = View.GONE
-//            }
-//
-//        })
-
     }
+
 
     private fun loadUi(list: List<RoomSaleResponse>) {
 
@@ -167,8 +163,6 @@ class RoomSaleFragment : Fragment() {
     private fun listener() {
 
     }
-
-
 
 
 }
