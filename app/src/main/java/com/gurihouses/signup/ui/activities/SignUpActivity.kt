@@ -28,7 +28,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
 
         initialized()
         listener()
-      //  getViewModel()
+       getViewModel()
 
         binding.btnNext.setOnClickListener {
 

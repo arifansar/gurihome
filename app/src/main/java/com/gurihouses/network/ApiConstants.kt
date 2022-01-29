@@ -14,6 +14,7 @@ class ApiConstants {
         const val API_HOME_TAB = "listingType"
         const val API_STATE = "getState"
         const val API_USER_PROPERTY = "propertyList"
+        const val API_POST_PROPERT = "createProperty"
 
 
 

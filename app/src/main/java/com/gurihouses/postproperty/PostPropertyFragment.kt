@@ -8,12 +8,6 @@ import android.view.ViewGroup
 import com.gurihouses.R
 import com.gurihouses.databinding.FragmentPostPropertyBinding
 
-
-/**
- * A simple [Fragment] subclass.
- * Use the [PostPropertyFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class PostPropertyFragment : Fragment() {
 
     lateinit var binding: FragmentPostPropertyBinding

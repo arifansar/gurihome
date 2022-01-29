@@ -7,6 +7,7 @@ import com.gurihouses.home.tabfragment.bean.PropertyByUserResponse
 import com.gurihouses.home.tabfragment.bean.RoomSaleResponse
 import com.gurihouses.home.tabfragment.bean.StateResponse
 import com.gurihouses.otp.ui.activities.model.OtpResponse
+import com.gurihouses.postproperty.model.PostPropertyResponse
 import com.gurihouses.profile.models.ProfileResponse
 import com.gurihouses.signup.ui.activities.model.SignUpResponse
 import retrofit2.Call
@@ -39,7 +40,8 @@ interface ApiInterface {
 
     @POST(ApiConstants.API_PROFILE)
     fun getProfile(
-        @Query("user_id") userId: String
+        @Query("user_id") userId: String,
+        @Query("Apikey") apiKey: String
     ): Call<ProfileResponse>
 
     @POST(ApiConstants.API_HOME_TAB)
@@ -52,6 +54,25 @@ interface ApiInterface {
 
     @GET(ApiConstants.API_USER_PROPERTY)
     fun getUserProperty():Call<PropertyByUserResponse>
+
+    @POST(ApiConstants.API_VERIFY_OTP)
+    fun postProperty(
+        @Query("owner_id") ownerId: Int,
+        @Query("title") title: String,
+        @Query("location") location: String,
+        @Query("lat") lat: String,
+        @Query("lng") lng: String,
+        @Query("price") price: String,
+        @Query("state") state: String,
+        @Query("city") city: String,
+        @Query("des") des: String,
+        @Query("image") image: String,
+        @Query("rooms") rooms: String,
+        @Query("area") area: String,
+        @Query("balcony") balcony: String,
+        @Query("face") face: String,
+        @Query("Apikey") Apikey: String
+    ): Call<PostPropertyResponse>
 
 
     companion object Factory {

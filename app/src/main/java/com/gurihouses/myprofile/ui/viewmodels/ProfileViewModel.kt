@@ -24,10 +24,10 @@ class ProfileViewModel : ViewModel() {
     }
 
 
-    fun getProfile(userId: String){
+    fun getProfile(userId: String,apiKey: String){
 
         loadingStatus?.postValue(true)
-        apiInterface.getProfile(userId).enqueue(object : retrofit2.Callback<ProfileResponse>{
+        apiInterface.getProfile(userId,apiKey).enqueue(object : retrofit2.Callback<ProfileResponse>{
             override fun onResponse(call: Call<ProfileResponse>, response: Response<ProfileResponse>) {
 
                 if (response.body()?.status==true) {
