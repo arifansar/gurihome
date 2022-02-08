@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gurihouses.R
 import com.gurihouses.home.tabfragment.bean.RoomSaleResponse
+import com.gurihouses.recent.model.RecentViewData
 
-class RecentViewAdapter(val ctx: Context?, val list: List<RoomSaleResponse>, val listener:(RoomSaleResponse)->Unit): RecyclerView.Adapter<RecentViewAdapter.ViewHolder>()  {
+class RecentViewAdapter(val ctx: Context?, val list: List<RecentViewData>, val listener:(RecentViewData)->Unit): RecyclerView.Adapter<RecentViewAdapter.ViewHolder>()  {
 
 
 
@@ -26,10 +27,10 @@ class RecentViewAdapter(val ctx: Context?, val list: List<RoomSaleResponse>, val
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val sub = list[position]
-        holder.saleName.text = sub.name
-        holder.saleLocation.text = sub.realname
-        holder.salePrice.text = sub.createdby
-        holder.saleBhk.text = sub.publisher
+        holder.saleName.text = sub.title
+        holder.saleLocation.text = sub.location
+        holder.salePrice.text = sub.price
+        holder.saleBhk.text = sub.rooms
         Glide.with(ctx!!).load(R.drawable.ic_room).into(holder.roomImage)
 
         holder.mMain.setOnClickListener {

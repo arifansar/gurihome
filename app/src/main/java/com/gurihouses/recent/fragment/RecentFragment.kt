@@ -6,26 +6,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gurihouses.R
 import com.gurihouses.databinding.FragmentRecentBinding
 import com.gurihouses.home.tabfragment.adapter.RoomSaleAdapter
 import com.gurihouses.home.tabfragment.bean.RoomSaleResponse
+import com.gurihouses.home.tabfragment.bean.UserProperty
 import com.gurihouses.home.tabfragment.viewmodel.RoomSaleViewModel
 import com.gurihouses.propertydetails.PropertyDetailActivity
 import com.gurihouses.recent.adapter.RecentViewAdapter
+import com.gurihouses.recent.model.RecentViewData
+import com.gurihouses.recent.viewmodel.RecentViewModel
+import com.gurihouses.util.CommonUtil
 
-
-/**
- * A simple [Fragment] subclass.
- * Use the [RecentFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class RecentFragment : Fragment() {
 
     lateinit var binding: FragmentRecentBinding
     lateinit var vm : RoomSaleViewModel
+    lateinit var recentViewModel: RecentViewModel
 
     companion object {
         @JvmStatic
@@ -58,43 +58,42 @@ class RecentFragment : Fragment() {
         binding.inclToolbar.ttitle.text = "Recently viewed"
 
 
-        loadSaleData()
+        loadRecentData()
 
     }
 
-    private fun loadSaleData() {
+    fun loadRecentData(){
+        recentViewModel.getRecentView(1,"e10adc3949ba59abbe56e057f20f883e")
+        recentViewModel.recentViewResoponse?.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
 
-        val list = arrayListOf<RoomSaleResponse>()
+                val response = it
+                val statusCode = response.status
+                val message = response.message
+                if (statusCode == true) {
 
-        list.add(
-            RoomSaleResponse(
-                "2 BHK in Cape Town ",
-                "Location: Cape town",
-                "","",
-                "Price: R1000",
-                "2BHK, Duplex, Apartment",
-                R.drawable.ic_room,"")
-        )
-        list.add(
-            RoomSaleResponse(
-                "2 BHK in Cape Town ",
-                "Location: Cape town",
-                "","",
-                "Price: R1000",
-                "2BHK, Duplex, Apartment",
-                R.drawable.room1,"")
-        )
-        list.add(
-            RoomSaleResponse(
-                "2 BHK in Cape Town ",
-                "Location: Cape town",
-                "","",
-                "Price: R1000",
-                "2BHK, Duplex, Apartment",
-                R.drawable.ic_room,"")
-        )
+                    if (response.data.isNotEmpty()) {
+                        setUpRecentData(response.data)
+                    }
 
+                }
 
+            }
+
+        })
+
+        recentViewModel.errorMsg?.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+
+                CommonUtil.showMessage(requireContext(), it.toString())
+
+            }
+
+        })
+
+    }
+
+    private fun setUpRecentData(list: List<RecentViewData>) {
 
 
         binding.recyclerView.layoutManager =

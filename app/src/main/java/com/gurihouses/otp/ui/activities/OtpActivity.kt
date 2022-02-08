@@ -47,12 +47,13 @@ class OtpActivity : AppCompatActivity() {
         number = sessionManager.getNumber()[SessionVar.KEY_MOBILE_NUM].toString()
         binding.btnSubmit.setOnClickListener {
 
-            val mScreen = Intent(this@OtpActivity, SignUpActivity::class.java)
+           val mScreen = Intent(this@OtpActivity, MainActivity::class.java)
             Intent.FLAG_ACTIVITY_NEW_TASK
             Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(mScreen)
             overridePendingTransition(R.anim.fadein, R.anim.fadeout)
             finish()
+            //getViewModel()
 
         }
 

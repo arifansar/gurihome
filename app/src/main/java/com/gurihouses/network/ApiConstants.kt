@@ -15,6 +15,9 @@ class ApiConstants {
         const val API_STATE = "getState"
         const val API_USER_PROPERTY = "propertyList"
         const val API_POST_PROPERT = "createProperty"
+        const val API_RECENT_VIEW = "recentView"
+        const val API_PROVIDER_DETAILS = "getLPropertyDetails"
+        const val API_CONTACT_US = "contact_us"
 
 
 

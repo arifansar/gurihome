@@ -108,8 +108,8 @@ class EnterNumberActivity : AppCompatActivity(), View.OnClickListener {
                 val message = response.message
                 if (statusCode) {
 
-                    //val intent = Intent(this, OtpActivity::class.java)
-                    val intent = Intent(this, MyProfileActivity::class.java)
+                    val intent = Intent(this, OtpActivity::class.java)
+                    //val intent = Intent(this, MyProfileActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK

@@ -2,13 +2,19 @@ package com.gurihouses.propertydetails
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import com.gurihouses.R
 import com.gurihouses.databinding.ActivityPropertyDetailBinding
+import com.gurihouses.postproperty.viewmodel.PostPropertyViewModel
 import com.gurihouses.propertydetails.adapter.BreakingAlertAdapter
+import com.gurihouses.propertydetails.viewmodel.ProviderDetailsViewModel
+import com.gurihouses.util.CommonUtil
 
 class PropertyDetailActivity : AppCompatActivity() {
 
     lateinit var binding:ActivityPropertyDetailBinding
+    private val propertyDetailsViewModel: ProviderDetailsViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +48,7 @@ class PropertyDetailActivity : AppCompatActivity() {
         binding.tabLayout1.setupWithViewPager(binding.viewPager2, true)
 
         binding.viewPager2.adapter = BreakingAlertAdapter(this, list)
+        loadPropertyDetailsData()
 
 
     }
@@ -52,6 +59,48 @@ class PropertyDetailActivity : AppCompatActivity() {
             onBackPressed()
             overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         }
+
+    }
+
+    fun loadPropertyDetailsData(){
+    propertyDetailsViewModel.getPropertyDetails(9,"e10adc3949ba59abbe56e057f20f883e",1)
+    propertyDetailsViewModel.providerDetailsResponse?.observe(this, Observer {
+            if (it != null) {
+
+                val response = it
+                val statusCode = response.status
+                val message = response.message
+                if (statusCode == true) {
+
+                    if (response.data?.sql!=null) {
+                        binding.saleName.setText(response.data?.sql?.title)
+                        binding.saleLocation.setText(response.data?.sql?.location)
+                        binding.propertyRoomNumber.setText(response.data?.sql?.rooms)
+                        binding.propertyPrice.setText(response.data?.sql?.price)
+                        binding.propertyDesc.setText(response.data?.sql?.des)
+                    }
+
+                }
+
+            }
+
+        })
+
+        propertyDetailsViewModel.errorMsg?.observe(this, Observer {
+            if (it != null) {
+
+                CommonUtil.showMessage(this, it.toString())
+
+            }
+
+        })
+
+
+    }
+
+    private fun setUpProviderData() {
+
+
 
     }
 }
