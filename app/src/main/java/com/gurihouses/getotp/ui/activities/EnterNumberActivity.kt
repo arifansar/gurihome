@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import com.gurihouses.R
 import com.gurihouses.databinding.ActivityEnterNumberBinding
 import com.gurihouses.getotp.ui.activities.viewmodel.LoginViewModel
+import com.gurihouses.myprofile.ui.MyProfileActivity
 import com.gurihouses.otp.ui.activities.OtpActivity
 import com.gurihouses.signup.ui.activities.SignUpActivity
 import com.gurihouses.ui.MainActivity
@@ -122,6 +123,7 @@ class EnterNumberActivity : AppCompatActivity(), View.OnClickListener {
                 if (statusCode) {
 
                     val intent = Intent(this, OtpActivity::class.java)
+                    //val intent = Intent(this, MyProfileActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK

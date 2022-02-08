@@ -1,6 +1,7 @@
 package com.gurihouses.network
 
 import android.content.Context
+import com.gurihouses.contactus.ui.activities.model.ContactUsResponse
 import com.gurihouses.getotp.ui.activities.model.LoginResponse
 import com.gurihouses.home.tabfragment.bean.HomeTabResponse
 import com.gurihouses.home.tabfragment.bean.PropertyByUserResponse
@@ -9,7 +10,10 @@ import com.gurihouses.home.tabfragment.bean.StateResponse
 import com.gurihouses.otp.ui.activities.model.OtpResponse
 import com.gurihouses.owner.bean.OwnerPropertyResponse
 import com.gurihouses.postproperty.model.CreatePostResponse
+import com.gurihouses.postproperty.model.PostPropertyResponse
 import com.gurihouses.profile.models.ProfileResponse
+import com.gurihouses.propertydetails.model.ProviderDetailsResponse
+import com.gurihouses.recent.model.RecentViewResponse
 import com.gurihouses.signup.ui.activities.model.SignUpResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -43,7 +47,8 @@ interface ApiInterface {
 
     @POST(ApiConstants.API_PROFILE)
     fun getProfile(
-        @Query("user_id") userId: String
+        @Query("user_id") userId: String,
+        @Query("Apikey") apiKey: String
     ): Call<ProfileResponse>
 
     @POST(ApiConstants.API_HOME_TAB)
@@ -52,10 +57,10 @@ interface ApiInterface {
     ): Call<HomeTabResponse>
 
     @POST(ApiConstants.API_STATE)
-    fun getState(): Call<StateResponse>
+    fun getState():Call<StateResponse>
 
     @GET(ApiConstants.API_USER_PROPERTY)
-    fun getUserProperty(): Call<PropertyByUserResponse>
+    fun getUserProperty():Call<PropertyByUserResponse>
 
 
     @GET(ApiConstants.API_OWNER_PROPERTY)

@@ -25,6 +25,7 @@ class MyProfileActivity : AppCompatActivity() {
         initialized()
         listener()
         getViewModel()
+        getProfileApi()
 
     }
 
@@ -73,5 +74,8 @@ class MyProfileActivity : AppCompatActivity() {
 
         })
 
+    }
+    private fun getProfileApi(){
+        mViewModel.getProfile("10","e10adc3949ba59abbe56e057f20f883e")
     }
 }

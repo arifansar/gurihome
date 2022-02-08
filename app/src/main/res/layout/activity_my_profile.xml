@@ -64,7 +64,7 @@
                 android:layout_marginTop="@dimen/_24sdp"
                 android:layout_marginStart="@dimen/_24sdp"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14ssp"
+                android:textSize="@dimen/_12ssp"
                 app:layout_constraintTop_toBottomOf="@+id/change_pic"
                 app:layout_constraintStart_toStartOf="parent"
                 android:text="@string/name"/>
@@ -76,6 +76,7 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:background="@android:color/transparent"
                 android:layout_marginEnd="@dimen/_20sdp"
+                android:textSize="@dimen/_12ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/text_name"
                 app:layout_constraintBottom_toBottomOf="@+id/text_name"
@@ -99,7 +100,7 @@
                 android:layout_marginTop="@dimen/_16sdp"
                 android:layout_marginStart="@dimen/_24sdp"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14ssp"
+                android:textSize="@dimen/_12ssp"
                 app:layout_constraintTop_toBottomOf="@+id/view1"
                 app:layout_constraintStart_toStartOf="parent"
                 android:text="@string/email_"/>
@@ -111,6 +112,7 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:background="@android:color/transparent"
                 android:layout_marginEnd="@dimen/_20sdp"
+                android:textSize="@dimen/_12ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/text_email"
                 app:layout_constraintBottom_toBottomOf="@+id/text_email"
@@ -135,7 +137,7 @@
                 android:layout_marginTop="@dimen/_16sdp"
                 android:layout_marginStart="@dimen/_24sdp"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14ssp"
+                android:textSize="@dimen/_12ssp"
                 app:layout_constraintTop_toBottomOf="@+id/view2"
                 app:layout_constraintStart_toStartOf="parent"
                 android:text="@string/mobile_"/>
@@ -147,6 +149,7 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:background="@android:color/transparent"
                 android:layout_marginEnd="@dimen/_20sdp"
+                android:textSize="@dimen/_12ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/text_mobile"
                 app:layout_constraintBottom_toBottomOf="@+id/text_mobile"
@@ -173,7 +176,7 @@
                 android:layout_marginTop="@dimen/_16sdp"
                 android:layout_marginStart="@dimen/_24sdp"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14ssp"
+                android:textSize="@dimen/_12ssp"
                 app:layout_constraintTop_toBottomOf="@+id/view3"
                 app:layout_constraintStart_toStartOf="parent"
                 android:text="@string/gender_"/>
@@ -219,8 +222,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
+                app:layout_constraintTop_toTopOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

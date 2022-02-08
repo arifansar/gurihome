@@ -177,7 +177,7 @@ class ProfileFragment : Fragment(),View.OnClickListener {
     }
 
     private fun getProfileApi(){
-    mViewModel.getProfile("10")
+    mViewModel.getProfile("10","Apikey")
     }
 
 }

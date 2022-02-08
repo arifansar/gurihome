@@ -4,6 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.gurihouses.base.GuriBaseApp
 import com.gurihouses.network.ApiInterface
+import com.gurihouses.postproperty.model.PostPropertyResponse
+import com.gurihouses.profile.models.ProfileResponse
+import retrofit2.Call
+import retrofit2.Response
+
+class PostPropertyViewModel : ViewModel() {
 import com.gurihouses.postproperty.model.CreatePostResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
