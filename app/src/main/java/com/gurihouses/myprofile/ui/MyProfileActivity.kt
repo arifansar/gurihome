@@ -15,6 +15,8 @@ class MyProfileActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMyProfileBinding
     private val mViewModel: ProfileViewModel by viewModels()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyProfileBinding.inflate(layoutInflater)
@@ -38,7 +40,7 @@ class MyProfileActivity : AppCompatActivity() {
 
     private fun getViewModel() {
 
-        mViewModel.profileResponse?.observe(this,{
+        mViewModel.profileResponse?.observe(this) {
             if (it != null) {
                 val response = it
                 val statusCode = response.status
@@ -54,7 +56,7 @@ class MyProfileActivity : AppCompatActivity() {
 
             }
 
-        })
+        }
         mViewModel.errorMsg?.observe(this, Observer {
             if (it != null) {
                 CommonUtil.showMessage(this, it.toString())

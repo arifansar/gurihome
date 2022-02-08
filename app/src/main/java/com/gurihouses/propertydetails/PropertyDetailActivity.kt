@@ -2,14 +2,18 @@ package com.gurihouses.propertydetails
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.gurihouses.R
 import com.gurihouses.databinding.ActivityPropertyDetailBinding
 import com.gurihouses.propertydetails.adapter.BreakingAlertAdapter
+import com.gurihouses.utilities.session.SessionManager
+import com.gurihouses.utilities.session.SessionVar
 
 class PropertyDetailActivity : AppCompatActivity() {
 
     lateinit var binding:ActivityPropertyDetailBinding
-
+    private lateinit var sessionManager: SessionManager
+    var user_type = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,11 +24,19 @@ class PropertyDetailActivity : AppCompatActivity() {
         initialization()
         listener()
 
+
+        if (user_type == SessionVar.PROPERTY_OWNER){
+           binding.rlMain4.visibility = View.GONE
+            binding.rlMain5.visibility = View.VISIBLE
+        }
+
+
     }
 
     private fun initialization() {
-
         binding.inlDetailToolbar.ttitle.text = "Property detail"
+        sessionManager = SessionManager(this)
+        user_type = sessionManager.getRole()[SessionVar.USER_TYPE].toString()
 
         val list = arrayListOf<Int>()
 

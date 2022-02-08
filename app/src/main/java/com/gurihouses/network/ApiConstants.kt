@@ -6,6 +6,8 @@ class ApiConstants {
         //BASE URL
         const val BASE_URL = "http://sanjivsirdeoghar.com/property/api/v1/"
 
+        const val API_KEY = "e10adc3949ba59abbe56e057f20f883e"
+
         // Auth
         const val API_SIGNUP = "signup"
         const val API_VERIFY_OTP = "verifyOtp"
@@ -14,6 +16,8 @@ class ApiConstants {
         const val API_HOME_TAB = "listingType"
         const val API_STATE = "getState"
         const val API_USER_PROPERTY = "propertyList"
+        const val API_OWNER_PROPERTY = "ownerPropertyList"
+        const val API_CREATE_POST = "createProperty"
 
 
 

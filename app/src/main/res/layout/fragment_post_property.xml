@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_gray"
-    tools:context=".postproperty.PostPropertyFragment">
+    tools:context=".postproperty.fragments.PostPropertyFragment">
 
 
     <RelativeLayout
@@ -16,7 +16,10 @@
             android:id="@+id/rl_main1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_16sdp">
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:layout_marginBottom="@dimen/_16sdp">
 
             <TextView
                 android:id="@+id/app_name"
@@ -51,16 +54,13 @@
             <Spinner
                 android:id="@+id/spinner_list_type"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
+                android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_toStartOf="@id/iv1"
                 android:background="@null"
-                android:entries="@array/listing_type"
-                android:gravity="center"
+                android:clickable="true"
                 android:padding="@dimen/_3sdp"
-                android:textSize="@dimen/_16ssp"
-                android:visibility="invisible" />
+                android:textSize="@dimen/_16ssp" />
 
             <ImageView
                 android:id="@+id/iv1"
@@ -88,16 +88,13 @@
             <Spinner
                 android:id="@+id/spinner_list_type2"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
+                android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_toStartOf="@id/iv2"
                 android:background="@null"
-                android:entries="@array/listing_type"
                 android:gravity="center"
                 android:padding="@dimen/_3sdp"
-                android:textSize="@dimen/_16ssp"
-                android:visibility="invisible" />
+                android:textSize="@dimen/_16ssp" />
 
             <ImageView
                 android:id="@+id/iv2"
@@ -126,16 +123,13 @@
             <Spinner
                 android:id="@+id/spinner_list_type3"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
+                android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_toStartOf="@id/iv3"
                 android:background="@null"
-                android:entries="@array/listing_type"
                 android:gravity="center"
                 android:padding="@dimen/_3sdp"
-                android:textSize="@dimen/_16ssp"
-                android:visibility="invisible" />
+                android:textSize="@dimen/_16ssp" />
 
             <ImageView
                 android:id="@+id/iv3"
@@ -273,6 +267,7 @@
 
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_create_post"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
                     android:backgroundTint="@color/blue"
@@ -285,5 +280,13 @@
 
             </RelativeLayout>
         </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
     </RelativeLayout>
 </ScrollView>

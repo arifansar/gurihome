@@ -182,10 +182,12 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rl_main4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/_10sdp"
+            android:visibility="visible"
             android:layout_below="@+id/inner_relative">
 
             <com.google.android.material.button.MaterialButton
@@ -220,5 +222,43 @@
                 android:text="Chat with owner"/>
 
         </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_main5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_main4"
+            android:visibility="gone"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp">
+
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_edit_property"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:backgroundTint="@color/blue"
+                android:fontFamily="@font/calibribold"
+                android:text="@string/btn_edit_property"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16ssp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_delete_property"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:backgroundTint="@color/red"
+                android:fontFamily="@font/calibribold"
+                android:text="@string/btn_delete_property"
+                android:layout_below="@+id/btn_edit_property"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16ssp" />
+
+
+        </RelativeLayout>
+
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

@@ -2,6 +2,7 @@ package com.gurihouses.home.tabfragment.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,8 +17,14 @@ import com.gurihouses.home.tabfragment.bean.RoomSaleResponse
 import com.gurihouses.home.tabfragment.bean.UserProperty
 import com.gurihouses.home.tabfragment.viewmodel.RoomSaleViewModel
 import com.gurihouses.home.tabfragment.viewmodel.UserPropertyViewModel
+import com.gurihouses.network.ApiConstants
+import com.gurihouses.owner.adapter.OwnerPropertyAdapter
+import com.gurihouses.owner.bean.OwnerProperty
+import com.gurihouses.owner.viewmodel.OwnerViewModel
 import com.gurihouses.propertydetails.PropertyDetailActivity
 import com.gurihouses.util.CommonUtil
+import com.gurihouses.utilities.session.SessionManager
+import com.gurihouses.utilities.session.SessionVar
 
 /**
  * A simple [Fragment] subclass.
@@ -30,6 +37,10 @@ class RoomSaleFragment : Fragment() {
     lateinit var vm: RoomSaleViewModel
     val mUserViewModel: UserPropertyViewModel by viewModels()
     var mSaleList = arrayListOf<UserProperty>()
+    var mOwnerList = arrayListOf<OwnerProperty>()
+    val vmOwner : OwnerViewModel by viewModels()
+    private lateinit var sessionManager: SessionManager
+    var user_type = ""
 
     companion object {
         @JvmStatic
@@ -58,14 +69,72 @@ class RoomSaleFragment : Fragment() {
         listener()
 
 
+        if (user_type == SessionVar.PROPERTY_OWNER){
+            loadOwnerDetails()
+        }else{
+            loadUserProperty()
+        }
+
+        Log.d("user_type",user_type)
     }
 
 
     private fun initialization() {
-        //vm = ViewModelProvider(this)[RoomSaleViewModel::class.java]
+        sessionManager = SessionManager(requireContext())
+        user_type = sessionManager.getRole()[SessionVar.USER_TYPE].toString()
 
-        // loadSaleData()
-        loadUserProperty()
+
+    }
+
+    private fun loadOwnerDetails() {
+
+        vmOwner.getOwnerPropertyDetails(2, ApiConstants.API_KEY)
+        /* Get Owner Details*/
+        vmOwner.mOwnerPropertyResponse?.observe(viewLifecycleOwner, {
+            if (it != null) {
+
+                val response = it
+                val statusCode = response.status
+                val message = response.message
+                if (statusCode) {
+
+                    if (it.data.isNotEmpty()) {
+
+                        it.data.forEach {
+
+                            if (it.listing_type == "Sale") {
+
+                                mOwnerList.add(
+                                    OwnerProperty(
+                                        it.id,
+                                        it.owner_id,
+                                        it.title,
+                                        it.location,
+                                        it.price,
+                                        it.des,
+                                        it.listing_type,
+                                        it.property_type,
+                                        it.image,
+                                        it.rooms,
+                                        it.created_at,
+                                        it.code,
+                                        it.status,
+                                        it.state,
+                                        it.city
+                                    )
+                                )
+                            }
+
+                        }
+                        setUpOwnerDetail(mOwnerList)
+
+                    }
+
+                }
+
+            }
+
+        })
 
     }
 
@@ -116,23 +185,6 @@ class RoomSaleFragment : Fragment() {
 
         })
 
-        mUserViewModel.errorMsg?.observe(viewLifecycleOwner, Observer {
-            if (it != null) {
-
-                CommonUtil.showMessage(requireContext(), it.toString())
-
-            }
-
-        })
-
-//        mUserViewModel.loadingStatus?.observe(viewLifecycleOwner, Observer {
-//            if (it == true) {
-//                binding.progressBar.visibility = View.VISIBLE
-//            } else {
-//                binding.progressBar.visibility = View.GONE
-//            }
-//
-//        })
 
 
     }
@@ -155,14 +207,27 @@ class RoomSaleFragment : Fragment() {
     }
 
 
-    private fun loadUi(list: List<RoomSaleResponse>) {
 
-
-    }
 
     private fun listener() {
 
     }
 
+    private fun setUpOwnerDetail(data: List<OwnerProperty>) {
+
+        binding.recyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.recyclerView.setHasFixedSize(true)
+        binding.recyclerView.adapter = OwnerPropertyAdapter(context, data) {
+
+            val mDetailScreen = Intent(context, PropertyDetailActivity::class.java)
+            Intent.FLAG_ACTIVITY_NEW_TASK
+            Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(mDetailScreen)
+            activity?.overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+
+        }
+
+    }
 
 }

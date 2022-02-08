@@ -14,6 +14,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.gurihouses.R
 import com.gurihouses.home.tabfragment.viewmodel.HomeTabViewModel
 import com.gurihouses.home.tabfragment.viewmodel.StateViewModel
+import com.gurihouses.utilities.session.SessionManager
+import com.gurihouses.utilities.session.SessionVar
 import java.util.*
 
 
@@ -29,6 +31,8 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener{
     private val mViewModel: StateViewModel by viewModels()
     private val mTabViewModel: HomeTabViewModel by viewModels()
     var state_id: Int = 0
+    private lateinit var sessionManager: SessionManager
+    var user_type = ""
 
     companion object {
         @JvmStatic
@@ -60,11 +64,19 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener{
         initialization()
         listener()
 
+        if (user_type == SessionVar.PROPERTY_OWNER){
+            binding.txtProperty.visibility = View.VISIBLE
+            binding.inclSearch.linearSearch.visibility = View.GONE
+        }
+
+
     }
 
 
 
     private fun initialization() {
+        sessionManager = SessionManager(requireContext())
+        user_type = sessionManager.getRole()[SessionVar.USER_TYPE].toString()
 
     }
 
@@ -91,6 +103,7 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener{
                         state_id = it.id
                     }
 
+                    sessionManager.setStateIdSession(state_id.toString())
                     getHomeTabViewModel(state_id)
 
                 }
@@ -98,8 +111,6 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener{
             }
 
         })
-
-
 
     }
 

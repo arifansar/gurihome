@@ -3,6 +3,7 @@ package com.gurihouses.otp.ui.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import androidx.core.widget.addTextChangedListener
 import com.gurihouses.R
 import com.gurihouses.databinding.ActivityOtpBinding
@@ -23,6 +24,7 @@ import com.gurihouses.signup.ui.activities.SignUpActivity
 import com.gurihouses.util.CommonUtil
 import com.gurihouses.utilities.session.SessionManager
 import com.gurihouses.utilities.session.SessionVar
+import java.lang.Exception
 
 
 class OtpActivity : AppCompatActivity() {
@@ -31,28 +33,31 @@ class OtpActivity : AppCompatActivity() {
     private val mViewModel: VerifyOtpViewModel by viewModels()
     private lateinit var sessionManager: SessionManager
     lateinit var number: String
+    var user_type = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOtpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        user_type = intent.getStringExtra(SessionVar.USER_TYPE).toString()
+        number = intent.getStringExtra(SessionVar.KEY_MOBILE_NUM).toString()
+
         initialization()
         listener()
 
+        getViewModel()
     }
 
     private fun initialization() {
-        sessionManager = SessionManager(this)
-        number = sessionManager.getNumber()[SessionVar.KEY_MOBILE_NUM].toString()
+        binding.number.text = number
+        countdown()
+       sessionManager = SessionManager(this)
+
         binding.btnSubmit.setOnClickListener {
 
-            val mScreen = Intent(this@OtpActivity, SignUpActivity::class.java)
-            Intent.FLAG_ACTIVITY_NEW_TASK
-            Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(mScreen)
-            overridePendingTransition(R.anim.fadein, R.anim.fadeout)
-            finish()
+            getSignUpApi()
 
         }
 
@@ -89,14 +94,23 @@ class OtpActivity : AppCompatActivity() {
                 val message = response.message
                 if (statusCode) {
 
-                    val intent = Intent(this, MainActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                    startActivity(intent)
-                    overridePendingTransition(R.anim.fadein, R.anim.fadeout)
-                    finish()
-                    CommonUtil.showMessage(this, response.message)
+                    try {
+                        val mrole = response.data?.role
+                        val id = response.data?.id
+                        sessionManager.createRoleSession(mrole.toString())
+                        sessionManager.setIdSession(id.toString())
+                        val intent = Intent(this, MainActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        intent.putExtra(SessionVar.USER_TYPE, mrole)
+                        startActivity(intent)
+                        overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+                        finish()
+                        CommonUtil.showMessage(this, response.message)
+                    }catch (e:Exception){
+                        e.printStackTrace()
+                    }
 
                 }
 
@@ -128,5 +142,30 @@ class OtpActivity : AppCompatActivity() {
 
     }
 
+
+    private fun countdown(){
+        object : CountDownTimer(30000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+
+                //binding.otpTime.text = """Resend code:(${(millisUntilFinished / 1000)})"""
+
+                var seconds = (millisUntilFinished / 1000).toInt()
+                val minutes = seconds / 60
+                seconds %= 60
+                """Resend code:${String.format("%02d", minutes)}:${
+                    String.format(
+                        "%02d",
+                        seconds
+                    )
+                }""".also { binding.otpTime.text = it }
+
+
+            }
+            override fun onFinish() {
+                // do something after countdown is done ie. enable button, change color
+                binding.otpTime.visibility = View.GONE
+            }
+        }.start()
+    }
 
 }

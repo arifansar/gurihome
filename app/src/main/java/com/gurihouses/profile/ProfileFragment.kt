@@ -17,7 +17,9 @@ import com.gurihouses.faq.ui.activities.FaqActivity
 import com.gurihouses.privacypolicy.ui.activities.PrivacyPolicyActivity
 import com.gurihouses.myprofile.ui.viewmodels.ProfileViewModel
 import com.gurihouses.termscondition.ui.activities.TermsConditionActivity
+import com.gurihouses.ui.MainActivity
 import com.gurihouses.util.CommonUtil
+import com.gurihouses.utilities.session.SessionManager
 
 
 class ProfileFragment : Fragment(),View.OnClickListener {
@@ -125,7 +127,10 @@ class ProfileFragment : Fragment(),View.OnClickListener {
 
             R.id.logout->{
 
-              Toast.makeText(activity,"Logout not implemented yet",Toast.LENGTH_LONG).show()
+                SessionManager(requireContext()).logoutUser()
+                Toast.makeText(activity,"Logout successfully",Toast.LENGTH_LONG).show()
+                (activity as MainActivity).finish()
+
 
             }
         }

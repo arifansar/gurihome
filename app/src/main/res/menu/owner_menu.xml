@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/owner_home"
         android:icon="@drawable/ic_home_gray"
         android:title="Home" />
 
@@ -11,17 +11,18 @@
         android:icon="@drawable/ic_chat_gray"
         android:title="Chat" />
 
+
     <item
-        android:id="@+id/recent"
-        android:icon="@drawable/ic_recent_gray"
-        android:title="Recent"
+        android:id="@+id/post"
+        android:icon="@drawable/ic_create_post"
+        android:title="Create Post"
+        android:visible="true"
         android:iconTint="@color/dark_gray"/>
 
-
     <item
-        android:id="@+id/notification"
-        android:icon="@drawable/ic_notification_gray"
-        android:title="Notification" />
+        android:id="@+id/owner_rent"
+        android:icon="@drawable/ic_rent_icon"
+        android:title="Rent" />
 
     <item
         android:id="@+id/profile"

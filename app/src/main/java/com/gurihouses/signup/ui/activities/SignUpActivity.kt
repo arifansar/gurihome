@@ -9,16 +9,19 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.gurihouses.R
 import com.gurihouses.databinding.ActivitySignUpBinding
+import com.gurihouses.getotp.ui.activities.EnterNumberActivity
 import com.gurihouses.otp.ui.activities.OtpActivity
 import com.gurihouses.signup.ui.activities.viewmodel.SignUpViewModel
 import com.gurihouses.ui.MainActivity
 import com.gurihouses.util.CommonUtil
 import com.gurihouses.util.Validation
+import com.gurihouses.utilities.session.SessionVar
 
 class SignUpActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var binding: ActivitySignUpBinding
     private val mViewModel: SignUpViewModel by viewModels()
+    var user_type = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,30 +31,24 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
 
         initialized()
         listener()
-      //  getViewModel()
-
-        binding.btnNext.setOnClickListener {
-
-            val intent = Intent(this, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            startActivity(intent)
-            overridePendingTransition(R.anim.fadein, R.anim.fadeout)
-            finish()
-
-
-        }
+        getViewModel()
 
     }
 
     private fun initialized() {
+        user_type = intent.getStringExtra(SessionVar.USER_TYPE).toString()
+        user_type.let {
+            user_type = it
+        }
+
+
 
     }
 
     private fun listener() {
 
         binding.btnNext.setOnClickListener(this)
+        binding.signIn.setOnClickListener(this)
     }
 
     private fun getViewModel() {
@@ -68,6 +65,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    intent.putExtra(SessionVar.KEY_MOBILE_NUM,binding.editMobile.text.toString())
                     startActivity(intent)
                     overridePendingTransition(R.anim.fadein, R.anim.fadeout)
                     finish()
@@ -104,6 +102,19 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_next -> {
 
                 checkValidation()
+            }
+
+            R.id.sign_in->{
+
+                val intent = Intent(this, EnterNumberActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                intent.putExtra(SessionVar.USER_TYPE,user_type)
+                startActivity(intent)
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+                finish()
+
             }
 
         }
@@ -161,7 +172,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
     private fun getSignUpApi() {
 
         mViewModel.getSignUpDetails(
-            "owner",
+            user_type,
             binding.editFirstName.text.toString().trim(),
             binding.editLastName.text.toString().trim(),
             binding.editMobile.text.toString().trim(),

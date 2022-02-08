@@ -10,6 +10,8 @@ import com.gurihouses.getotp.ui.activities.EnterNumberActivity
 import com.gurihouses.databinding.ActivityChooseOptionBinding
 import com.gurihouses.faq.ui.activities.FaqActivity
 import com.gurihouses.notification.NotificationFragment
+import com.gurihouses.utilities.session.SessionManager
+import com.gurihouses.utilities.session.SessionVar
 
 class ChooseOptionActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -26,6 +28,7 @@ class ChooseOptionActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun listeners() {
         binding.btnUser.setOnClickListener(this)
+        binding.btnOwner.setOnClickListener(this)
     }
 
     private fun initialization() {
@@ -34,19 +37,33 @@ class ChooseOptionActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
 
-  when (v?.id){
+        when (v?.id) {
 
-  R.id.btn_user ->{
+            R.id.btn_user -> {
 
-      val intent = Intent(this, EnterNumberActivity::class.java)
-      intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-      intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-      intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-      startActivity(intent)
-      overridePendingTransition(R.anim.fadein, R.anim.fadeout)
-      finish()
-  }
-  }
+                val intent = Intent(this, EnterNumberActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                intent.putExtra(SessionVar.USER_TYPE,SessionVar.PROPERTY_USER)
+                startActivity(intent)
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+
+            }
+
+            R.id.btn_owner->{
+
+                val intent = Intent(this, EnterNumberActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                intent.putExtra(SessionVar.USER_TYPE,SessionVar.PROPERTY_OWNER)
+                startActivity(intent)
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+
+
+            }
+        }
     }
 
 }

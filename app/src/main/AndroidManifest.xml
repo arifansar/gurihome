@@ -4,6 +4,11 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- Android 10 (API level 29) and higher.-->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
     <application
         android:name=".base.GuriBaseApp"
@@ -70,6 +75,7 @@
         <activity
             android:name=".getotp.ui.activities.EnterNumberActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustPan|adjustResize"
             android:screenOrientation="portrait" />
         <activity
             android:name=".usertype.ui.activities.ChooseOptionActivity"
@@ -78,6 +84,7 @@
         <activity
             android:name=".ui.MainActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustPan|adjustResize"
             android:screenOrientation="portrait" />
     </application>
 

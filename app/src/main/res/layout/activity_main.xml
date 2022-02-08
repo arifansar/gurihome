@@ -7,6 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
+    <RelativeLayout
+        android:id="@+id/rl_user"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -23,5 +31,33 @@
         android:background="@color/white"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_menu" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_owner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.MainActivity"
+        android:visibility="gone">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/owner_nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/owner_bottom_nav_view"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/owner_navigation_menu" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/owner_bottom_nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_alignParentBottom="true"
+            app:menu="@menu/owner_menu" />
+
+    </RelativeLayout>
 
 </RelativeLayout>
